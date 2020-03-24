@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //Components
 import Home from './components/Home'
+import NavBar from './components/navigation/NavBar'
 import ProductList from './components/Products/ProductList'
 import ProductAdd from './components/Products/ProductAdd'
 import ProductDetail from './components/Products/ProductDetail'
@@ -13,6 +14,7 @@ import ProductUpdate from './components/Products/ProductUpdate'
 function App() {
   return (
     <Router>
+      <NavBar/>
       <Route path='/' exact component={Home} />
       <Route path='/products' exact component={ProductList} />
       <Route path='/products/add' exact component={ProductAdd} />
