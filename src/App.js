@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import 'bulma/css/bulma.css';
+
 
 //Components
 import Home from './components/Home'
@@ -14,12 +16,14 @@ import ProductUpdate from './components/Products/ProductUpdate'
 function App() {
   return (
     <Router>
-      <NavBar/>
-      <Route path='/' exact component={Home} />
-      <Route path='/products' exact component={ProductList} />
-      <Route path='/products/add' exact component={ProductAdd} />
-      <Route path='/products/detail/:id' exact component={ProductDetail} />
-      <Route path='/products/update/:id' exact component={ProductUpdate} />
+      <div className='container'>
+        <NavBar/>
+        <Route path='/' exact component={Home} />
+        <Route path='/products' exact component={ProductList} />
+        <Route path='/products/add' exact component={ProductAdd} />
+        <Route path='/products/detail/:id' exact component={ProductDetail} />
+        <Route path='/products/update/:id' exact component={ProductUpdate} />
+      </div>
     </Router>
   );
 }

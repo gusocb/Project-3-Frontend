@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import 'bulma/css/bulma.css';
 
 const ProductList = props =>{
 
@@ -19,13 +20,14 @@ const ProductList = props =>{
     },[])
 
     return (
-        <table className='table'>
+        <table className='table is-striped'>
             <thead>
                 <tr>
                     <th>Barcode</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th colSpan='2'>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +39,8 @@ const ProductList = props =>{
                                 <td><Link to={'/products/detail/'+product._id}>{product.name}</Link></td>
                                 <td>${product.price}</td>
                                 <td>{product.stock}</td>
-                                
+                                <td><button className="button is-info is-outlined is-small"><Link to={'products/update/'+product._id}>Update</Link></button></td>
+                                <td><button className="button is-danger is-outlined is-small">Delete</button></td>
                             </tr>
                         )
                     })
