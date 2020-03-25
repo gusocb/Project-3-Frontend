@@ -6,9 +6,9 @@ const NavBar = () => {
     return(
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <Link className="navbar-item" to="google.com">
+                <a className="navbar-item" href="https://github.com/gusocb">
                     <img src="./images/logopos.png" alt="Ironhack Point of Sale"/>
-                </Link>
+                </a>
             </div>
 
             <div className="navbar-menu">
@@ -18,6 +18,13 @@ const NavBar = () => {
                 </div>
 
                 <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <Link className="button is-danger">
+                                Logout
+                            </Link>
+                    </div>
+      </div>
                 </div>
             </div>
         </nav>
