@@ -19,6 +19,7 @@ const ProductAdd = props =>{
         event.preventDefault();
         axios.post('http://localhost:5000/products/add',formState)
         .then( ()=>{
+            console.log('hola')
             props.getData();
             updateFormState({
                 barcode:'',

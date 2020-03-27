@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
-import {useParams, useHistory, Link} from 'react-router-dom'
+import {useParams, Link, useHistory} from 'react-router-dom'
 import 'bulma/css/bulma.css';
 
 
@@ -8,7 +8,7 @@ import 'bulma/css/bulma.css';
 const ProductDetail = () =>{
 
     const {id} = useParams();
-    const history =useHistory();
+    const history = useHistory();
 
     const [singleProductState, updateSingleProductState] = useState({
         barcode:'',
@@ -31,6 +31,9 @@ const ProductDetail = () =>{
 
     const deleteProject = () => {
         axios.delete(`http://localhost:5000/products/detail/${id}`)
+        .then(() => {
+            history.push('/products')
+        })
         .catch((err)=>{
             console.log(err)
         })

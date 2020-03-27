@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import 'bulma/css/bulma.css';
 import axios from 'axios';
 
 const ProductUpdate = () =>{
 
     const {id} = useParams();
+    const history = useHistory();
+
     const [formState, updateFormState] = useState({
         barcode: "",
         name:"",
@@ -31,8 +33,17 @@ const ProductUpdate = () =>{
         console.log(formState);
     }
 
+    const handleSubmitForm = event => {
+        event.preventDefault();
+        axios.put(`http://localhost:5000/products/detail/${id}`,formState)
+        .then(() => {
+            history.push(`/products/detail/${id}`)
+        })
+        .catch(err => console.log(err))
+    }
+
     return(
-        <form>
+        <form onSubmit={handleSubmitForm}>
             <div className="field">
                 <label className="label">Barcode</label>
                 <div className="control">

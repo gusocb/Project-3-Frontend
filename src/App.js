@@ -8,7 +8,6 @@ import 'bulma/css/bulma.css';
 import Home from './components/Home'
 import NavBar from './components/navigation/NavBar'
 import ProductList from './components/Products/ProductList'
-import ProductAdd from './components/Products/ProductAdd'
 import ProductDetail from './components/Products/ProductDetail'
 import ProductUpdate from './components/Products/ProductUpdate'
 

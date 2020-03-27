@@ -51,7 +51,7 @@ const ProductList = () =>{
                 </table>
             </div>
             <div className='level-right'>
-                <ProductAdd />
+                <ProductAdd getData={getAllProducts} />
             </div>
         </div>
     )
