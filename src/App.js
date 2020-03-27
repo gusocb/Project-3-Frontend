@@ -20,7 +20,6 @@ function App() {
         <NavBar/>
         <Route path='/' exact component={Home} />
         <Route path='/products' exact component={ProductList} />
-        <Route path='/products/add' exact component={ProductAdd} />
         <Route path='/products/detail/:id' exact component={ProductDetail} />
         <Route path='/products/update/:id' exact component={ProductUpdate} />
       </div>

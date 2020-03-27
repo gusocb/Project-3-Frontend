@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom'
 import 'bulma/css/bulma.css';
+import axios from 'axios';
 
 const ProductUpdate = () =>{
 
@@ -12,36 +13,56 @@ const ProductUpdate = () =>{
         stock:""
     });
 
-    
+    useEffect(() => {
+        getSingleProduct()
+    },[]);
+
+    const getSingleProduct = () => {
+        axios.get(`http://localhost:5000/products/detail/${id}`)
+        .then( response => {
+            updateFormState(response.data)
+        })
+        .catch(err => console.log(err))
+    }
+
+    const handleChange = (event) => {  
+        const { name, value } = event.target;
+        updateFormState(Object.assign({}, formState, {[name]: value}))
+        console.log(formState);
+    }
 
     return(
         <form>
             <div className="field">
-                <label class="label">Barcode</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Here goes the code" />
+                <label className="label">Barcode</label>
+                <div className="control">
+                    <input class="input" name='barcode' type="text" value={formState.barcode} onChange={e => handleChange(e)} />
                 </div>
             </div>
 
             <div className="field">
-                <label class="label">Name</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Here goes the name" />
+                <label className="label">Name</label>
+                <div className="control">
+                    <input className="input" name='name' type="text" value={formState.name} onChange={e => handleChange(e)} />
                 </div>
             </div>
 
             <div className="field">
-                <label class="label">Price</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Here goes the price" />
+                <label className="label">Price</label>
+                <div className="control">
+                    <input className="input" name='price' type="text" value={formState.price} onChange={e => handleChange(e)}/>
                 </div>
             </div>
 
             <div className="field">
-                <label class="label">Stock</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Here goes the stock" />
+                <label className="label">Stock</label>
+                <div className="control">
+                    <input className="input" name='stock' type="text" value={formState.stock} onChange={e => handleChange(e)}/>
                 </div>
+            </div>
+
+            <div class="control">
+                <button type='submit' className="button is-primary">Update</button>
             </div>
         </form>
     )

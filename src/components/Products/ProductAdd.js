@@ -31,20 +31,40 @@ const ProductAdd = props =>{
     }
 
     return(
-        <div>
-            <form onSubmit={handleFormSubmit}>
-                <label>Barcode:</label>
-                <input type="text" name="barcode" value={formState.barcode} onChange={ e => handleChange(e)}/>
-                <label>Name:</label>
-                <input type="text" name="name" value={formState.name} onChange={ e => handleChange(e)}/>
-                <label>Price:</label>
-                <input type="text" name="price" value={formState.price} onChange={ e => handleChange(e)}/>
-                <label>Stock:</label>
-                <input type="text" name="stock" value={formState.stock} onChange={ e => handleChange(e)}/>
-                
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
+        <form onSubmit={handleFormSubmit}>
+            <div className="field">
+                <label className="label">Barcode</label>
+                <div class="control">
+                    <input className="input" name='barcode' type="text" value={formState.barcode} onChange={e => handleChange(e)} />
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Name</label>
+                <div className="control">
+                    <input className="input" name='name' type="text" value={formState.name} onChange={e => handleChange(e)} />
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Price</label>
+                <div className="control">
+                    <input className="input" name='price' type="text" value={formState.price} onChange={e => handleChange(e)}/>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Stock</label>
+                <div className="control">
+                    <input className="input" name='stock' type="text" value={formState.stock} onChange={e => handleChange(e)}/>
+                </div>
+            </div>
+
+            <div class="control">
+                <button type='submit' className="button is-primary">Add New</button>
+            </div>
+
+        </form>
         )
 }
 
