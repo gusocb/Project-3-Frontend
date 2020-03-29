@@ -10,7 +10,7 @@ import NavBar from './components/navigation/NavBar'
 import ProductList from './components/Products/ProductList'
 import ProductDetail from './components/Products/ProductDetail'
 import ProductUpdate from './components/Products/ProductUpdate'
-
+import SalesList from './components/sales/SalesList'
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
         <Route path='/products' exact component={ProductList} />
         <Route path='/products/detail/:id' exact component={ProductDetail} />
         <Route path='/products/update/:id' exact component={ProductUpdate} />
+        <Route path='/sales' exact component={SalesList} />
       </div>
     </Router>
   );
