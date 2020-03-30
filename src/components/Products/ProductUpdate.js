@@ -30,7 +30,6 @@ const ProductUpdate = () =>{
     const handleChange = (event) => {  
         const { name, value } = event.target;
         updateFormState(Object.assign({}, formState, {[name]: value}))
-        console.log(formState);
     }
 
     const handleSubmitForm = event => {
