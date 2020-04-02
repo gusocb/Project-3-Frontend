@@ -1,51 +1,54 @@
-import React, {useState, useEffect} from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import 'bulma/css/bulma.css';
 
-
-const SaleSearch = () => {
-
-    const [searchState, updateSearchState] = useState({
+class SaleSearch extends Component{
+   state = {
         search:'',
-    });
+        productList:[],
+        saleList:[],
+        notFound:false
+   }
 
-    const [productState, setProductState] =useState([])
+    componentDidMount(){
+        this.getAllProducts()
+    }
 
-    const [saleState, setSale] = useState([])
-
-    useEffect( () => {
-        getAllProducts();
-    },[])
-
-    const getAllProducts = () => {
+    getAllProducts = () => {
         axios.get('http://localhost:5000/products')
         .then(res => {
-            setProductState(res.data)
-            
+            this.setState({productList:res.data})
+            console.log(this.productList)
         })
         .catch(err => console.log(err))
     }
 
-    const handleChange = (event) => {  
+    handleChange = (event) => {  
         const { name, value } = event.target;
-        updateSearchState(Object.assign({}, searchState, {[name]: value}))
+        Object.assign({}, this.state.search, {[name]: value})
     }
 
-    const handleFormSubmit = (event) => {
+     handleFormSubmit = (event) => {
         event.preventDefault();
-        const filteredProduct = productState.filter(product =>{
-            return product.barcode.includes(searchState.search)
-        })
-        updateSearchState({
-            search:''
-        })
-        saleState.push(filteredProduct[0])
+        // const filteredProduct = saleState.productList.filter(product =>{
+        //     return product.barcode.includes(saleState.search)
+        // })
+        // updateSaleState({
+        //     search:''
+        // })
+        // if (!filteredProduct){
+        //     updateSaleState({notFound:true})
+        // }
+        // else {
+        //     updateSaleState({saleList:filteredProduct[0]});
+        // }
+        // console.log(saleState.notFound)
     }
-
+  render(){
     return(
         <div>
-        <form onSubmit={handleFormSubmit}>
-            <input name='search' value={searchState.search} onChange={e => handleChange(e)} />
+        <form onSubmit={this.handleFormSubmit}>
+            <input name='search' value={this.state.search} onChange={e => this.handleChange(e)} />
             <button type='submit'>Search</button>
         </form>
         <table className='table'>
@@ -57,7 +60,7 @@ const SaleSearch = () => {
                 </tr>
             </thead>
             <tbody>
-                {saleState.map(product => {
+                {/* {saleState.saleList.map(product => {
                     return (
                         <tr>
                             <td>{product.name}</td>
@@ -65,11 +68,12 @@ const SaleSearch = () => {
                             <td>{product.stock}</td>
                         </tr>
                     )
-                })}
+                })} */}
             </tbody>
         </table>
         </div>
-    )
+    );
+ }
 }
 
 export default SaleSearch;
