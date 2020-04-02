@@ -1,54 +1,51 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bulma/css/bulma.css';
 
-class SaleSearch extends Component{
-   state = {
+
+const SaleSearch = () => {
+
+    const [searchState, updateSearchState] = useState({
         search:'',
-        productList:[],
-        saleList:[],
-        notFound:false
-   }
+    });
 
-    componentDidMount(){
-        this.getAllProducts()
-    }
+    const [productState, setProductState] =useState([])
 
-    getAllProducts = () => {
+    const [saleState, setSale] = useState([])
+
+    useEffect( () => {
+        getAllProducts();
+    },[])
+
+    const getAllProducts = () => {
         axios.get('http://localhost:5000/products')
         .then(res => {
-            this.setState({productList:res.data})
-            console.log(this.productList)
+            setProductState(res.data)
+            
         })
         .catch(err => console.log(err))
     }
 
-    handleChange = (event) => {  
+    const handleChange = (event) => {  
         const { name, value } = event.target;
-        Object.assign({}, this.state.search, {[name]: value})
+        updateSearchState(Object.assign({}, searchState, {[name]: value}))
     }
 
-     handleFormSubmit = (event) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault();
-        // const filteredProduct = saleState.productList.filter(product =>{
-        //     return product.barcode.includes(saleState.search)
-        // })
-        // updateSaleState({
-        //     search:''
-        // })
-        // if (!filteredProduct){
-        //     updateSaleState({notFound:true})
-        // }
-        // else {
-        //     updateSaleState({saleList:filteredProduct[0]});
-        // }
-        // console.log(saleState.notFound)
+        const filteredProduct = productState.filter(product =>{
+            return product.barcode.includes(searchState.search)
+        })
+        updateSearchState({
+            search:''
+        })
+        setSale([...saleState,...filteredProduct])
     }
-  render(){
+
     return(
         <div>
-        <form onSubmit={this.handleFormSubmit}>
-            <input name='search' value={this.state.search} onChange={e => this.handleChange(e)} />
+        <form onSubmit={handleFormSubmit}>
+            <input name='search' value={searchState.search} onChange={e => handleChange(e)} />
             <button type='submit'>Search</button>
         </form>
         <table className='table'>
@@ -60,7 +57,7 @@ class SaleSearch extends Component{
                 </tr>
             </thead>
             <tbody>
-                {/* {saleState.saleList.map(product => {
+                {saleState.map(product => {
                     return (
                         <tr>
                             <td>{product.name}</td>
@@ -68,12 +65,11 @@ class SaleSearch extends Component{
                             <td>{product.stock}</td>
                         </tr>
                     )
-                })} */}
+                })}
             </tbody>
         </table>
         </div>
-    );
- }
+    )
 }
 
 export default SaleSearch;
