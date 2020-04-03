@@ -9,9 +9,11 @@ const SaleSearch = () => {
         search:'',
     });
 
-    const [productState, setProductState] =useState([])
+    const [productList, setProductList] =useState([])
 
-    const [saleState, setSale] = useState([])
+    const [saleList, updateSalesList] = useState([])
+
+    // const [notFound, toggleNotFound] = useState(false)
 
     useEffect( () => {
         getAllProducts();
@@ -20,7 +22,7 @@ const SaleSearch = () => {
     const getAllProducts = () => {
         axios.get('http://localhost:5000/products')
         .then(res => {
-            setProductState(res.data)
+            setProductList(res.data)
             
         })
         .catch(err => console.log(err))
@@ -32,14 +34,42 @@ const SaleSearch = () => {
     }
 
     const handleFormSubmit = (event) => {
+        
         event.preventDefault();
-        const filteredProduct = productState.filter(product =>{
-            return product.barcode.includes(searchState.search)
+
+        const filteredProduct = productList.filter(product =>{
+            return product.barcode === searchState.search
         })
+
         updateSearchState({
             search:''
         })
-        setSale([...saleState,...filteredProduct])
+
+        if(!filteredProduct[0]){
+            console.log('no existe el producto')
+        }
+        else {
+            const productArray = saleList.filter(ele=>{
+                return ele._id === filteredProduct[0]._id;
+            })
+            if(productArray.length >0){
+                const newList = saleList.map(ele=>{
+                    if (ele._id === filteredProduct[0]._id) {
+                        ele.quantity++;
+                        return ele;
+                    } else {
+                        return ele;
+                    }
+                })
+                updateSalesList(newList)
+            } else {
+                filteredProduct[0].quantity=1;  
+                updateSalesList([filteredProduct[0],...saleList])
+            }
+
+            
+        }
+
     }
 
     return(
@@ -54,15 +84,17 @@ const SaleSearch = () => {
                     <th>Name</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th>Quantity</th>
                 </tr>
             </thead>
             <tbody>
-                {saleState.map(product => {
+                {saleList.map(product => {
                     return (
-                        <tr>
+                        <tr key={product._id}>
                             <td>{product.name}</td>
                             <td>{product.price}</td>
                             <td>{product.stock}</td>
+                            <td>{product.quantity}</td>
                         </tr>
                     )
                 })}
