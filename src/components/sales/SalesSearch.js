@@ -9,9 +9,11 @@ const SaleSearch = () => {
         search:'',
     });
 
-    const [productList, setProductList] =useState([])
+    const [productList, setProductList] =useState([]);
 
-    const [saleList, updateSalesList] = useState([])
+    const [saleList, updateSalesList] = useState([]);
+
+    const [total, updateTotal] = useState(0);
 
     // const [notFound, toggleNotFound] = useState(false)
 
@@ -49,13 +51,16 @@ const SaleSearch = () => {
             console.log('no existe el producto')
         }
         else {
+
             const productArray = saleList.filter(ele=>{
                 return ele._id === filteredProduct[0]._id;
             })
+
             if(productArray.length >0){
                 const newList = saleList.map(ele=>{
                     if (ele._id === filteredProduct[0]._id) {
                         ele.quantity++;
+                        ele.subtotal = ele.quantity * ele.price;
                         return ele;
                     } else {
                         return ele;
@@ -64,12 +69,15 @@ const SaleSearch = () => {
                 updateSalesList(newList)
             } else {
                 filteredProduct[0].quantity=1;  
+                filteredProduct[0].subtotal=filteredProduct[0].price;  
                 updateSalesList([filteredProduct[0],...saleList])
             }
-
             
         }
+        
+    }
 
+    const checkout = () => {
     }
 
     return(
@@ -85,6 +93,7 @@ const SaleSearch = () => {
                     <th>Price</th>
                     <th>Stock</th>
                     <th>Quantity</th>
+                    <th>Subtotal</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,14 +101,18 @@ const SaleSearch = () => {
                     return (
                         <tr key={product._id}>
                             <td>{product.name}</td>
-                            <td>{product.price}</td>
+                            <td>${product.price}</td>
                             <td>{product.stock}</td>
                             <td>{product.quantity}</td>
+                            <td>${product.subtotal}</td>
                         </tr>
                     )
                 })}
             </tbody>
         </table>
+                
+        <button className='button is-primary' onClick={checkout}>Checkout</button>
+
         </div>
     )
 }

@@ -18,10 +18,10 @@ const NavBar = () => {
                     <Link className="navbar-item" to='/sales'>Sales</Link>
                 </div>
 
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <Link className="button is-danger">
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                        <div className="buttons">
+                            <Link className="button is-danger" to='/logout'>
                                 Logout
                             </Link>
                     </div>
