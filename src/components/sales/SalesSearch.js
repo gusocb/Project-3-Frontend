@@ -17,18 +17,18 @@ const SaleSearch = () => {
 
     // const [notFound, toggleNotFound] = useState(false)
 
-    useEffect( () => {
-        getAllProducts();
-    },[])
-
+    
     const getAllProducts = () => {
         axios.get('http://localhost:5000/products')
         .then(res => {
             setProductList(res.data)
-            
+            console.log('llamaste getallproducts')
         })
         .catch(err => console.log(err))
     }
+    useEffect(() => {
+        getAllProducts();
+    },[])
 
     const handleChange = (event) => {  
         const { name, value } = event.target;
@@ -74,7 +74,6 @@ const SaleSearch = () => {
             }
             
         }
-        
     }
 
     
@@ -86,6 +85,10 @@ const SaleSearch = () => {
         })
         updateTotal(sum)
     }
+
+    useEffect(() => {
+        calculateTotal()
+    });
 
     const checkout = () => {
     }
@@ -122,7 +125,6 @@ const SaleSearch = () => {
         </table>
                 
         <button className='button is-primary' onClick={checkout}>Checkout</button>
-        <button onClick={calculateTotal}>Calculate total</button>
         <p className='title is-1'>Total: ${total}</p>
 
         </div>
