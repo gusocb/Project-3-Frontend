@@ -77,6 +77,16 @@ const SaleSearch = () => {
         
     }
 
+    
+
+    const calculateTotal = () => {
+        let sum =0;
+        saleList.forEach(ele => {
+            sum = sum + ele.subtotal
+        })
+        updateTotal(sum)
+    }
+
     const checkout = () => {
     }
 
@@ -112,6 +122,8 @@ const SaleSearch = () => {
         </table>
                 
         <button className='button is-primary' onClick={checkout}>Checkout</button>
+        <button onClick={calculateTotal}>Calculate total</button>
+        <p className='title is-1'>Total: ${total}</p>
 
         </div>
     )
