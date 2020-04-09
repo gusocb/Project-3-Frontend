@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bulma/css/bulma.css';
 
 
@@ -15,16 +15,25 @@ import Signup from './components/auth/Signup';
 
 
 function App() {
+
+  const [loggedInUser,setLoggedInUser] = useState(null)
+
+  const getTheUser = (userObj) => {
+    setLoggedInUser(userObj)
+  }
+
   return (
     <Router>
       <div className='container'>
-        <Route exact path="/signup" component={Signup}/>
-        <NavBar/>
-        <Route path='/' exact component={Home} />
-        <Route path='/products' exact component={ProductList} />
-        <Route path='/products/detail/:id' exact component={ProductDetail} />
-        <Route path='/products/update/:id' exact component={ProductUpdate} />
-        <Route path='/sales' exact component={SalesSearch} />
+        <Switch>
+          <NavBar/>
+          <Route exact path="/signup" render={<Signup getUser={getTheUser}/>}/>
+          <Route path='/' exact component={Home} />
+          <Route path='/products' exact component={ProductList} />
+          <Route path='/products/detail/:id' exact component={ProductDetail} />
+          <Route path='/products/update/:id' exact component={ProductUpdate} />
+          <Route path='/sales' exact component={SalesSearch} />
+        </Switch>
       </div>
     </Router>
   );
