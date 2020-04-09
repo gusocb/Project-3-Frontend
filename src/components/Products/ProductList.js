@@ -9,7 +9,7 @@ const ProductList = () =>{
     const [listOfProducts, updateList] = useState([]);
 
     const getAllProducts = () => {
-        axios.get('http://localhost:5000/products')
+        axios.get('http://localhost:5000/api/products')
         .then(response => {
             updateList(response.data)
         })

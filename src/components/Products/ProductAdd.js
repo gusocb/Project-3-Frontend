@@ -19,7 +19,7 @@ const ProductAdd = props =>{
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        axios.post('http://localhost:5000/products/add',formState)
+        axios.post('http://localhost:5000/api/products/add',formState)
         .then( ()=>{
             props.getData();
             updateFormState({
