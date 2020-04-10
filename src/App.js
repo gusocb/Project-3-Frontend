@@ -46,9 +46,9 @@ function App() {
     return (
       <Router>
         <div className='container'>
+          <NavBar getUser={getTheUser} userInSession={loggedInUser}/>
           <Switch>
-            <NavBar userInSession={loggedInUser}/>
-            <Route exact path="/signup" render={<Signup getUser={getTheUser}/>}/>
+            <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
             <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
             <Route path='/products' exact component={ProductList} />
@@ -64,9 +64,10 @@ function App() {
     return(
       <Router>
         <div className='container'>
+          <NavBar userInSession={loggedInUser}/>
           <Switch>
-            <NavBar userInSession={loggedInUser}/>
-            <Route exact path="/signup" render={<Signup getUser={getTheUser}/>}/>
+            <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
+            <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
             <Route path='/products' exact component={ProductList} />
             <Route path='/products/detail/:id' exact component={ProductDetail} />

@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import 'bulma/css/bulma.css';
+import AuthService from '../auth/auth-services';
 
-const NavBar = () => {
+const NavBar = props => {
 
-    const [loggedInUser, setLoggedInUser] = useState(null)
+    const service = new AuthService();
 
-    const componentWillReceiveProps = nextProps => {
-        setLoggedInUser(nextProps['userInSession'])
-    }
+    const logoutUser = () =>{
+        service.logout()
+        .then(() => {
+          props.getUser(null);  
+        })
+      }
 
-    if(loggedInUser){
+    if(props.userInSession){
         return(
             
             <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -30,9 +34,9 @@ const NavBar = () => {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link className="button is-danger" to='/logout'>
+                                <button className="button is-danger" onClick={logoutUser}>
                                     Logout
-                                </Link>
+                                </button>
                         </div>
           </div>
                     </div>
