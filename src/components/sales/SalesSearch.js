@@ -19,7 +19,7 @@ const SaleSearch = () => {
 
     
     const getAllProducts = () => {
-        axios.get('http://localhost:5000/api/products')
+        axios.get('http://localhost:5000/api/products', {withCredentials:true})
         .then(res => {
             setProductList(res.data)
             console.log('llamaste getallproducts')

@@ -20,7 +20,7 @@ const ProductUpdate = () =>{
     },[]);
 
     const getSingleProduct = () => {
-        axios.get(`http://localhost:5000/api/products/detail/${id}`)
+        axios.get(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
         .then( response => {
             updateFormState(response.data)
         })
@@ -34,7 +34,7 @@ const ProductUpdate = () =>{
 
     const handleSubmitForm = event => {
         event.preventDefault();
-        axios.put(`http://localhost:5000/api/products/detail/${id}`,formState)
+        axios.put(`http://localhost:5000/api/products/detail/${id}`,formState, {withCredentials:true})
         .then(() => {
             history.push(`/products/detail/${id}`)
         })

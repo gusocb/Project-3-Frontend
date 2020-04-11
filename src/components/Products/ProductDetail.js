@@ -22,7 +22,7 @@ const ProductDetail = () =>{
     },[]);
 
     const getSingleProduct = () => {
-        axios.get(`http://localhost:5000/api/products/detail/${id}`)
+        axios.get(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
         .then(response => {
             updateSingleProductState(response.data)
         })
@@ -30,7 +30,7 @@ const ProductDetail = () =>{
     }
 
     const deleteProject = () => {
-        axios.delete(`http://localhost:5000/api/products/detail/${id}`)
+        axios.delete(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
         .then(() => {
             history.push('/products')
         })

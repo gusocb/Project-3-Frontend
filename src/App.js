@@ -14,6 +14,7 @@ import SalesSearch from './components/sales/SalesSearch'
 import Signup from './components/auth/Signup';
 import AuthService from './components/auth/auth-services';
 import Login from './components/auth/Login';
+import ProtectedRoute from './components/auth/protected-route';
 
 
 
@@ -51,10 +52,10 @@ function App() {
             <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
             <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
-            <Route path='/products' exact component={ProductList} />
-            <Route path='/products/detail/:id' exact component={ProductDetail} />
-            <Route path='/products/update/:id' exact component={ProductUpdate} />
-            <Route path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute path='/products' exact component={ProductList} />
+            <ProtectedRoute path='/products/detail/:id' exact component={ProductDetail} />
+            <ProtectedRoute path='/products/update/:id' exact component={ProductUpdate} />
+            <ProtectedRoute path='/sales' exact component={SalesSearch} />
           </Switch>
         </div>
       </Router>
@@ -69,10 +70,10 @@ function App() {
             <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
             <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
-            <Route path='/products' exact component={ProductList} />
-            <Route path='/products/detail/:id' exact component={ProductDetail} />
-            <Route path='/products/update/:id' exact component={ProductUpdate} />
-            <Route path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute path='/products' exact component={ProductList} />
+            <ProtectedRoute path='/products/detail/:id' exact component={ProductDetail} />
+            <ProtectedRoute path='/products/update/:id' exact component={ProductUpdate} />
+            <ProtectedRoute path='/sales' exact component={SalesSearch} />
           </Switch>
         </div>
       </Router>
