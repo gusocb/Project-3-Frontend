@@ -52,10 +52,10 @@ function App() {
             <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
             <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
-            <ProtectedRoute path='/products' exact component={ProductList} />
-            <ProtectedRoute path='/products/detail/:id' exact component={ProductDetail} />
-            <ProtectedRoute path='/products/update/:id' exact component={ProductUpdate} />
-            <ProtectedRoute path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
+            <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
+            <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
           </Switch>
         </div>
       </Router>
@@ -70,10 +70,10 @@ function App() {
             <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
             <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
-            <ProtectedRoute path='/products' exact component={ProductList} />
-            <ProtectedRoute path='/products/detail/:id' exact component={ProductDetail} />
-            <ProtectedRoute path='/products/update/:id' exact component={ProductUpdate} />
-            <ProtectedRoute path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
+            <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
+            <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
+            <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
           </Switch>
         </div>
       </Router>
