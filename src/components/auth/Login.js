@@ -28,19 +28,36 @@ const Login = props => {
   }
     
   return(
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" value={state.username} onChange={ e => handleChange(e)}/>
-        <label>Password:</label>
-        <input name="password" value={state.password} onChange={ e => handleChange(e)} />
-        
-        <input type="submit" value="Login" />
+    <form onSubmit={handleFormSubmit}>
+        <div className="field">
+          <label className="label">Username</label>
+          <div className="control">
+            <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)}/>
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Password</label>
+          <div className="control">
+            <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)}/>
+          </div>
+        </div>
+
+        <div className="field">
+          <div className="control">
+            <button className='button is-link is-light' type="submit">Login</button>
+          </div>
+        </div>
+
+        <div className='field'>
+          <div className='control'>
+            <p>Don't have an account? 
+                <Link to={"/signup"}>Signup</Link>
+            </p>
+          </div>
+        </div>
+
       </form>
-      <p>Don't have account? 
-          <Link to={"/signup"}> Signup</Link>
-      </p>
-    </div>
   )
   
 }

@@ -58,7 +58,7 @@ const NavBar = props => {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link className="button is-link is-outlined" to='/login'>
+                                <Link className="button is-link is-inverted" to='/login'>
                                     Login
                                 </Link>
                                 <Link className="button is-link" to='/signup'>
