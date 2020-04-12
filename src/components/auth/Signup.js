@@ -1,56 +1,56 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import AuthService from './auth-services';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-class Signup extends Component {
-  constructor(props){
-    super(props);
-    this.state = { username: '', password: '' };
-    this.service = new AuthService();
-  }
+const Signup = props => {
 
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const [state, setState] = useState({ username: '', password: '' })
+    const service = new AuthService();
+    const history = useHistory()
   
-    this.service.signup(username, password)
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const username = state.username;
+    const password = state.password;
+  
+    service.signup(username, password)
     .then( response => {
-        this.setState({
+        setState({
             username: "", 
             password: "",
         });
-        this.props.getUser(response)
+        props.getUser(response)
     })
+    .then(() => history.push('/dashboard'))
     .catch( error => console.log(error) )
   }
   
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+  const handleChange = (event) => {  
+    const { name, value } = event.target;
+    setState(Object.assign({}, state, {[name]: value}))
   }
       
   
-  render(){
-    return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          
-          <label>Password:</label>
-          <input name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          
-          <input type="submit" value="Signup" />
-        </form>
+  return(
+    <div>
+      <form onSubmit={handleFormSubmit}>
+        <label>Username:</label>
+        <input type="text" name="username" value={state.username} onChange={ e => handleChange(e)}/>
+        
+        <label>Password:</label>
+        <input name="password" value={state.password} onChange={ e => handleChange(e)} />
+        
+        <input type="submit" value="Signup" />
+      </form>
+
+      <p>Already have account? 
+          <Link to={"/login"}> Login</Link>
+      </p>
+
+    </div>
+  )
   
-        <p>Already have account? 
-            <Link to={"/login"}> Login</Link>
-        </p>
-  
-      </div>
-    )
-  }
 }
 
 export default Signup;

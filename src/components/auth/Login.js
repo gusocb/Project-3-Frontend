@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import AuthService from './auth-services';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-class Login extends Component {
-  constructor(props){
-    super(props);
-    this.state = { username: '', password: '' };
-    this.service = new AuthService();
-  }
+const Login = props => {
 
-  handleFormSubmit = (event) => {
+    const [state, setState] = useState({ username: '', password: '' })
+    const service = new AuthService();
+    const history = useHistory()
+  
+
+  const handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    this.service.login(username, password)
+    const username = state.username;
+    const password = state.password;
+    service.login(username, password)
     .then( response => {
-        this.setState({ username: "", password: "" });
-        this.props.getUser(response)
+        setState({ username: "", password: "" });
+        props.getUser(response)
     })
+    .then(() => history.push('/dashboard'))
     .catch( error => console.log(error) )
   }
     
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
+  const handleChange = (event) => {  
+    const { name, value } = event.target;
+    setState(Object.assign({}, state, {[name]: value}))
   }
     
-  render(){
-    return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          <label>Password:</label>
-          <input name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          
-          <input type="submit" value="Login" />
-        </form>
-        <p>Don't have account? 
-            <Link to={"/signup"}> Signup</Link>
-        </p>
-      </div>
-    )
-  }
+  return(
+    <div>
+      <form onSubmit={handleFormSubmit}>
+        <label>Username:</label>
+        <input type="text" name="username" value={state.username} onChange={ e => handleChange(e)}/>
+        <label>Password:</label>
+        <input name="password" value={state.password} onChange={ e => handleChange(e)} />
+        
+        <input type="submit" value="Login" />
+      </form>
+      <p>Don't have account? 
+          <Link to={"/signup"}> Signup</Link>
+      </p>
+    </div>
+  )
+  
 }
 
 export default Login;
