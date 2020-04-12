@@ -15,6 +15,7 @@ import Signup from './components/auth/Signup';
 import AuthService from './components/auth/auth-services';
 import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/protected-route';
+import Dashboard from './components/dashboard/Dashboard'
 
 
 
@@ -49,13 +50,12 @@ function App() {
         <div className='container'>
           <NavBar getUser={getTheUser} userInSession={loggedInUser}/>
           <Switch>
-            <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
-            <Route exact path='/login' render={() => <Login getUser={getTheUser}/>}/>
             <Route path='/' exact component={Home} />
+            <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
             <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
             <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
-            <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
+            <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
           </Switch>
         </div>
       </Router>
@@ -74,6 +74,7 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
             <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
+            <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
           </Switch>
         </div>
       </Router>

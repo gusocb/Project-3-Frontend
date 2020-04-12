@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AuthService from './auth-services';
 import { Link } from 'react-router-dom';
 
-
 class Signup extends Component {
   constructor(props){
     super(props);
@@ -46,7 +45,7 @@ class Signup extends Component {
         </form>
   
         <p>Already have account? 
-            <Link to={"/"}> Login</Link>
+            <Link to={"/login"}> Login</Link>
         </p>
   
       </div>
