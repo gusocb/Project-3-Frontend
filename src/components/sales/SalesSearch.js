@@ -89,8 +89,16 @@ const SaleSearch = props => {
     });
 
     const checkout = () => {
-        console.log(saleList)
-        console.log(total)
+        let saleObj = new Object()
+        saleObj.sale=saleList
+        saleObj.total=total
+        saleObj.owner=props.loggedInUser.username
+
+        axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
+        .then( ()=> {
+            updateSalesList([])
+        })
+        .catch(err => console.log(err)) 
     }
 
     return(
