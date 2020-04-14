@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bulma/css/bulma.css';
 
 
-const SaleSearch = () => {
+const SaleSearch = props => {
 
     const [searchState, updateSearchState] = useState({
         search:'',
@@ -22,7 +22,6 @@ const SaleSearch = () => {
         axios.get('http://localhost:5000/api/products', {withCredentials:true})
         .then(res => {
             setProductList(res.data)
-            console.log('llamaste getallproducts')
         })
         .catch(err => console.log(err))
     }
@@ -48,7 +47,6 @@ const SaleSearch = () => {
         })
 
         if(!filteredProduct[0]){
-            console.log('no existe el producto')
         }
         else {
 
@@ -91,14 +89,32 @@ const SaleSearch = () => {
     });
 
     const checkout = () => {
+        let saleObj = new Object()
+        saleObj.sale=saleList
+        saleObj.total=total
+        saleObj.owner=props.loggedInUser._id
+
+        axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
+        .then( ()=> {
+            updateSalesList([])
+        })
+        .catch(err => console.log(err)) 
     }
 
     return(
         <div>
         <form onSubmit={handleFormSubmit}>
-            <input name='search' value={searchState.search} onChange={e => handleChange(e)} />
-            <button type='submit'>Search</button>
+            <div className="field has-addons">
+                <div className="control">
+                <input className='input' name='search' value={searchState.search} onChange={e => handleChange(e)} placeholder='Barcode here' />
+                </div>
+                <div className="control">
+                    <button type='submit'class="button is-info">Search</button>
+                </div>
+            </div>
         </form>
+
+
         <table className='table'>
             <thead>
                 <tr>

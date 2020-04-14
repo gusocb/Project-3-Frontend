@@ -30,16 +30,16 @@ const Login = props => {
   return(
     <form onSubmit={handleFormSubmit}>
         <div className="field">
-          <label className="label">Username</label>
+          <label className="label">Email</label>
           <div className="control">
-            <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)}/>
+            <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)} placeholder='example@mail.com'/>
           </div>
         </div>
 
         <div className="field">
           <label className="label">Password</label>
           <div className="control">
-            <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)}/>
+            <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)} placeholder='Your password here'/>
           </div>
         </div>
 
