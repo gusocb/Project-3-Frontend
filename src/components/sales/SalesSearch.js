@@ -92,7 +92,7 @@ const SaleSearch = props => {
         let saleObj = new Object()
         saleObj.sale=saleList
         saleObj.total=total
-        saleObj.owner=props.loggedInUser.username
+        saleObj.owner=props.loggedInUser._id
 
         axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
         .then( ()=> {
