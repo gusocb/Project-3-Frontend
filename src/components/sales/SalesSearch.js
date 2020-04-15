@@ -59,6 +59,7 @@ const SaleSearch = props => {
                     if (ele._id === filteredProduct[0]._id) {
                         ele.quantity++;
                         ele.subtotal = ele.quantity * ele.price;
+                        ele.newStock = ele.stock-ele.quantity
                         return ele;
                     } else {
                         return ele;
@@ -67,13 +68,15 @@ const SaleSearch = props => {
                 updateSalesList(newList)
             } else {
                 filteredProduct[0].quantity=1;  
-                filteredProduct[0].subtotal=filteredProduct[0].price;  
+                filteredProduct[0].subtotal=filteredProduct[0].price;
+                filteredProduct[0].newStock = filteredProduct[0].stock - filteredProduct[0].quantity;  
                 updateSalesList([filteredProduct[0],...saleList])
             }
             
         }
     }
 
+    
     
 
     const calculateTotal = () => {
@@ -131,8 +134,16 @@ const SaleSearch = props => {
                         <tr key={product._id}>
                             <td>{product.name}</td>
                             <td>${product.price}</td>
-                            <td>{product.stock}</td>
-                            <td>{product.quantity}</td>
+                            <td>{product.newStock}</td>
+                            <td>
+                                <button className='button is-primary is-light is-small' onClick={()=>product.quantity--}>
+                                    -
+                                </button>
+                                {product.quantity}
+                                <button className='button is-primary is-light is-small'onClick={()=>product.quantity++}>
+                                    +
+                                </button>
+                            </td>
                             <td>${product.subtotal}</td>
                         </tr>
                     )
