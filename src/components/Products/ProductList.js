@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'bulma/css/bulma.css';
 import ProductAdd from './ProductAdd'
 
-const ProductList = () =>{
+const ProductList = props =>{
 
     const [listOfProducts, updateList] = useState([]);
 
@@ -51,7 +51,7 @@ const ProductList = () =>{
                 </table>
             </div>
             <div className='level-right'>
-                <ProductAdd getData={getAllProducts} />
+                <ProductAdd user={props.loggedInUser} getData={getAllProducts} />
             </div>
         </div>
     )

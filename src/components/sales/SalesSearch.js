@@ -96,6 +96,8 @@ const SaleSearch = props => {
         saleObj.sale=saleList
         saleObj.total=total
         saleObj.owner=props.loggedInUser._id
+        saleObj.store=props.loggedInUser.store
+
 
         axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
         .then( ()=> {
