@@ -9,7 +9,8 @@ const ProductAdd = props =>{
         barcode:'',
         name: '',
         price: '',
-        stock: ''
+        stock: '',
+        store:props.user.store
     })
 
     const handleChange = (event) => {  
@@ -26,7 +27,7 @@ const ProductAdd = props =>{
                 barcode:'',
                 name: '',
                 price: '',
-                stock: ''
+                stock: '',
             })
         })
         .catch(err => console.log(err))
