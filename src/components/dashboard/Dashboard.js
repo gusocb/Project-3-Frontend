@@ -12,7 +12,7 @@ const Dashboard = props => {
                 </div>
                 <div class="media-content">
                     <p class="title is-4">{props.loggedInUser.name} {props.loggedInUser.lastname}</p>
-                    <p class="subtitle is-6">{props.loggedInUser.role}</p>
+                    <p class="subtitle is-6">{props.loggedInUser.role==='admin'?'Administrator':'User'}</p>
                 </div>
                 </div>
 

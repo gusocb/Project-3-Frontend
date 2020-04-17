@@ -68,7 +68,7 @@ const ProductAdd = props =>{
             </div>
 
         </form>
-        )
+    )
 }
 
 export default ProductAdd;
