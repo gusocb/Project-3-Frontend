@@ -35,7 +35,7 @@ const UserList = props =>{
                         {
                             listOfUsers.map(user => {
                                 return(
-                                    <tr>
+                                    <tr key={user._id}>
                                         <td>{user.name}</td>
                                         <td>{user.role==='admin'?'Administrator':'User'}</td>
                                         <td>

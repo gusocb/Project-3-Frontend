@@ -16,8 +16,9 @@ import AuthService from './components/auth/auth-services';
 import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/protected-route';
 import Dashboard from './components/dashboard/Dashboard'
-import UserAdd from './components/users/UserAdd'
 import UserList from './components/users/UserList'
+import UserDetail from './components/users/UserDetail'
+import UserUpdate from './components/users/UserUpdate'
 
 
 
@@ -59,6 +60,8 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
             <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
             <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
+            <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
+            <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
           </Switch>
         </div>
       </Router>
@@ -79,7 +82,8 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
             <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
             <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
-
+            <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
+            <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
           </Switch>
         </div>
       </Router>
