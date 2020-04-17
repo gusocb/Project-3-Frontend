@@ -7,7 +7,7 @@ const UserAdd = props => {
     const [formState, updateFormState] = useState({
         name:'',
         lastname: '',
-        store:props.loggedInUser.store,
+        store:props.user.store,
         username: '',
         password: '',
         role:''
@@ -68,7 +68,7 @@ const UserAdd = props => {
                 <label class="label">Role</label>
                 <div class="control">
                     <div class="select">
-                    <select name='roles' onChange={e => handleChange(e)}>
+                    <select name='role' onChange={e => handleChange(e)}>
                         <option value=''>Select an option</option>
                         <option value='user'>User</option>
                         <option value='admin'>Admin</option>

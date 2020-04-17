@@ -17,6 +17,7 @@ import Login from './components/auth/Login';
 import ProtectedRoute from './components/auth/protected-route';
 import Dashboard from './components/dashboard/Dashboard'
 import UserAdd from './components/users/UserAdd'
+import UserList from './components/users/UserList'
 
 
 
@@ -57,7 +58,7 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
             <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
-            <ProtectedRoute user={loggedInUser} path='/users' exact component={UserAdd} />
+            <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
           </Switch>
         </div>
       </Router>
@@ -77,6 +78,8 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
             <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
             <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
+            <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
+
           </Switch>
         </div>
       </Router>
