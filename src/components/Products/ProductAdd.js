@@ -28,6 +28,7 @@ const ProductAdd = props =>{
                 name: '',
                 price: '',
                 stock: '',
+                store:props.user.store
             })
         })
         .catch(err => console.log(err))

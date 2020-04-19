@@ -26,11 +26,13 @@ const UserAdd = props => {
             updateFormState({
                 name:'',
                 lastname: '',
+                store:props.user.store,
                 username: '',
                 password: '',
                 role:''
             })
         })
+        .then(console.log(formState))
         .catch(err => console.log(err))
     }
 
@@ -69,7 +71,6 @@ const UserAdd = props => {
                 <div class="control">
                     <div class="select">
                     <select name='role' onChange={e => handleChange(e)}>
-                        <option value=''>Select an option</option>
                         <option value='user'>User</option>
                         <option value='admin'>Admin</option>
                     </select>
