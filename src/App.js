@@ -19,7 +19,9 @@ import Dashboard from './components/dashboard/Dashboard'
 import UserList from './components/users/UserList'
 import UserDetail from './components/users/UserDetail'
 import UserUpdate from './components/users/UserUpdate'
+import Reports from './components/reports/Reports'
 import Footer from './components/navigation/Footer'
+
 
 
 
@@ -64,6 +66,7 @@ function App() {
               <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
             </Switch>
             <Footer/>
+
       </Router>
     )
   }
@@ -83,6 +86,7 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
             <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
             <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
+            <ProtectedRoute user={loggedInUser} path='/reports' exact component={Reports} />
           </Switch>
           <Footer/>
       </Router>

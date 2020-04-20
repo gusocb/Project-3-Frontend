@@ -18,8 +18,7 @@ const NavBar = props => {
         switch(props.userInSession.role){
             case 'admin':
                 return(
-            
-                    <div className='container'>
+                      <div className='container'>
                         <nav className="navbar" role="navigation" aria-label="main navigation">
                             <div className="navbar-brand">
                                 <a className="navbar-item" href="/">
@@ -34,6 +33,7 @@ const NavBar = props => {
                                     <Link className="navbar-item" to='/products'>Products</Link>
                                     <Link className="navbar-item" to='/sales'>Sales</Link>
                                     <Link className="navbar-item" to='/users'>Users</Link>
+                                    <Link className="navbar-item" to='/reports'>Reports</Link>
                                 </div>
                 
                                 <div className="navbar-end">
@@ -47,7 +47,7 @@ const NavBar = props => {
                                 </div>
                             </div>
                         </nav>
-                    </div>
+                  </div>
                 )
             break;
 
