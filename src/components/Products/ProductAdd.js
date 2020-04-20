@@ -35,7 +35,7 @@ const ProductAdd = props =>{
     }
 
     return(
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className='box'>
             <div className="field">
                 <label className="label">Barcode</label>
                 <div class="control">

@@ -37,7 +37,7 @@ const UserAdd = props => {
     }
 
     return(
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className='box'>
             <div className="field">
                 <label className="label">Name</label>
                 <div class="control">
@@ -83,6 +83,8 @@ const UserAdd = props => {
             </div>
 
         </form>
+
+        
     )
 
 }

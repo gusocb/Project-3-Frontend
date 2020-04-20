@@ -19,6 +19,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import UserList from './components/users/UserList'
 import UserDetail from './components/users/UserDetail'
 import UserUpdate from './components/users/UserUpdate'
+import Footer from './components/navigation/Footer'
 
 
 
@@ -50,27 +51,25 @@ function App() {
   if(loggedInUser){
     return (
       <Router>
-        <div className='container'>
-          <NavBar getUser={getTheUser} userInSession={loggedInUser}/>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
-            <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
-            <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
-            <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
-            <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
-            <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
-            <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
-            <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
-          </Switch>
-        </div>
+            <NavBar getUser={getTheUser} userInSession={loggedInUser}/>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <ProtectedRoute user={loggedInUser} path='/products' exact component={ProductList} />
+              <ProtectedRoute user={loggedInUser} path='/products/detail/:id' exact component={ProductDetail} />
+              <ProtectedRoute user={loggedInUser} path='/products/update/:id' exact component={ProductUpdate} />
+              <ProtectedRoute user={loggedInUser} path='/sales' exact component={SalesSearch} />
+              <ProtectedRoute user={loggedInUser} path='/dashboard' exact component={Dashboard} />
+              <ProtectedRoute user={loggedInUser} path='/users' exact component={UserList} />
+              <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
+              <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
+            </Switch>
+            <Footer/>
       </Router>
     )
   }
   else {
     return(
       <Router>
-        <div className='container'>
           <NavBar userInSession={loggedInUser}/>
           <Switch>
             <Route exact path="/signup" render={()=><Signup getUser={getTheUser}/>}/>
@@ -85,7 +84,6 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
             <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
           </Switch>
-        </div>
       </Router>
     )
   }

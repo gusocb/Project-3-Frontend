@@ -21,37 +21,39 @@ const ProductList = props =>{
     },[])
 
     return (
-        <div className='level'>
-            <div className='level-left'>
-                <table className='table is-striped'>
-                    <thead>
-                        <tr>
-                            <th>Barcode</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th colSpan='2'>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            listOfProducts.map(product => {
-                                return(
-                                    <tr>
-                                        <td>{product.barcode}</td>
-                                        <td>{product.name}</td>
-                                        <td>${product.price}</td>
-                                        <td>{product.stock}</td>
-                                        <td><button className="button is-info is-outlined is-small"><Link to={'products/detail/'+product._id}>Details</Link></button></td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div className='level-right'>
-                <ProductAdd user={props.loggedInUser} getData={getAllProducts} />
+        <div className='container'>
+            <div className='columns'>
+                <div className='column'>
+                    <table className='table is-striped is-fullwidth'>
+                        <thead>
+                            <tr>
+                                <th>Barcode</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th colSpan='2'>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                listOfProducts.map(product => {
+                                    return(
+                                        <tr>
+                                            <td>{product.barcode}</td>
+                                            <td>{product.name}</td>
+                                            <td>${product.price}</td>
+                                            <td>{product.stock}</td>
+                                            <td><button className="button is-info is-outlined is-small"><Link to={'products/detail/'+product._id}>Details</Link></button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div className='column'>
+                    <ProductAdd user={props.loggedInUser} getData={getAllProducts} />
+                </div>
             </div>
         </div>
     )
