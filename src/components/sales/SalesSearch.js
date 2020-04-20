@@ -107,56 +107,77 @@ const SaleSearch = props => {
     }
 
     return(
-        <div>
-        <form onSubmit={handleFormSubmit}>
-            <div className="field has-addons">
-                <div className="control">
-                <input className='input' name='search' value={searchState.search} onChange={e => handleChange(e)} placeholder='Barcode here' />
-                </div>
-                <div className="control">
-                    <button type='submit'class="button is-info">Search</button>
+        <div className='hero'>
+            <div class='hero-body'>
+                <div className='container'>
+
+                    
+
+                    <div className='tile is-ancestor'>
+                        <div className='tile is-parent'>
+                            <div className='tile is-child'>
+                                <table className='table is-fullwidth'>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Stock</th>
+                                            <th>Quantity</th>
+                                            <th>Subtotal</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {saleList.map(product => {
+                                            return (
+                                                <tr key={product._id}>
+                                                    <td>{product.name}</td>
+                                                    <td>${product.price}</td>
+                                                    <td>{product.newStock}</td>
+                                                    <td>
+                                                        <button className='button is-primary is-light is-small' onClick={()=>product.quantity--}>
+                                                            -
+                                                        </button>
+                                                        {product.quantity}
+                                                        <button className='button is-primary is-light is-small'onClick={()=>product.quantity++}>
+                                                            +
+                                                        </button>
+                                                    </td>
+                                                    <td>${product.subtotal}</td>
+                                                    <td><button className='button is-danger is-small'>Delete</button></td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div className='tile is-parent is-4 is-vertical'>
+                            <div className='tile is-child'>
+                                <form onSubmit={handleFormSubmit}>
+                                    <div className="field has-addons">
+                                        <div className="control">
+                                        <input className='input' name='search' value={searchState.search} onChange={e => handleChange(e)} placeholder='Barcode here' />
+                                        </div>
+                                        <div className="control">
+                                            <button type='submit'class="button is-info">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className='tile is-child box'>
+                                <p className='title is-1'>Total: ${total}</p>
+                                <button className='button is-primary' onClick={checkout}>Checkout</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
-
-
-        <table className='table'>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                {saleList.map(product => {
-                    return (
-                        <tr key={product._id}>
-                            <td>{product.name}</td>
-                            <td>${product.price}</td>
-                            <td>{product.newStock}</td>
-                            <td>
-                                <button className='button is-primary is-light is-small' onClick={()=>product.quantity--}>
-                                    -
-                                </button>
-                                {product.quantity}
-                                <button className='button is-primary is-light is-small'onClick={()=>product.quantity++}>
-                                    +
-                                </button>
-                            </td>
-                            <td>${product.subtotal}</td>
-                        </tr>
-                    )
-                })}
-            </tbody>
-        </table>
-                
-        <button className='button is-primary' onClick={checkout}>Checkout</button>
-        <p className='title is-1'>Total: ${total}</p>
-
         </div>
+
+
+
     )
 }
 

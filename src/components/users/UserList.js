@@ -21,37 +21,39 @@ const UserList = props =>{
     },[])
 
     return (
-        <div className='level'>
-            <div className='level-left'>
-                <table className='table is-striped'>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            listOfUsers.map(user => {
-                                return(
-                                    <tr key={user._id}>
-                                        <td>{user.name}</td>
-                                        <td>{user.role==='admin'?'Administrator':'User'}</td>
-                                        <td>
-                                            <button className="button is-info is-outlined is-small">
-                                                <Link to={'users/detail/'+user._id}>Details</Link>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div className='level-right'>
-                <UserAdd user={props.loggedInUser} getData={getAllUsers} />
+        <div className='container'>
+            <div className='columns'>
+                <div className='column'>
+                    <table className='table is-striped is-fullwidth'>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                listOfUsers.map(user => {
+                                    return(
+                                        <tr key={user._id}>
+                                            <td>{user.name}</td>
+                                            <td>{user.role==='admin'?'Administrator':'User'}</td>
+                                            <td>
+                                                <button className="button is-info is-outlined is-small">
+                                                    <Link to={'users/detail/'+user._id}>Details</Link>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div className='column'>
+                    <UserAdd user={props.loggedInUser} getData={getAllUsers} />
+                </div>
             </div>
         </div>
     )

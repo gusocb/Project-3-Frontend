@@ -37,7 +37,7 @@ const UserAdd = props => {
     }
 
     return(
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className='box'>
             <div className="field">
                 <label className="label">Name</label>
                 <div class="control">
@@ -71,6 +71,7 @@ const UserAdd = props => {
                 <div class="control">
                     <div class="select">
                     <select name='role' onChange={e => handleChange(e)}>
+                        <option value=''>Select an option</option>
                         <option value='user'>User</option>
                         <option value='admin'>Admin</option>
                     </select>
@@ -83,6 +84,8 @@ const UserAdd = props => {
             </div>
 
         </form>
+
+        
     )
 
 }

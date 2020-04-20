@@ -28,36 +28,51 @@ const Login = props => {
   }
     
   return(
-    <form onSubmit={handleFormSubmit}>
-        <div className="field">
-          <label className="label">Email</label>
-          <div className="control">
-            <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)} placeholder='example@mail.com'/>
+    <section className='hero'>
+      <div className='hero-body'>
+        <div className='container'>
+        <div className='columns is-centered'>
+          <div className='column is-5-tablet is-4-desktop is-3-widescreen'>
+            
+            <form onSubmit={handleFormSubmit} className='box'>
+              <div className="field">
+                <label className="label">Email</label>
+                <div className="control">
+                  <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)} placeholder='example@mail.com'/>
+                </div>
+              </div>
+
+              <div className="field">
+                <label className="label">Password</label>
+                <div className="control">
+                  <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)} placeholder='Your password here'/>
+                </div>
+              </div>
+
+              <div className="field">
+                <div className="control">
+                  <button className='button is-link is-light' type="submit">Login</button>
+                </div>
+              </div>
+
+              <div className='field'>
+                <div className='control'>
+                  <p>Don't have an account? 
+                      <Link to={"/signup"}> Signup</Link>
+                  </p>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
+      </div>
+    </section>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)} placeholder='Your password here'/>
-          </div>
-        </div>
+   
 
-        <div className="field">
-          <div className="control">
-            <button className='button is-link is-light' type="submit">Login</button>
-          </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <p>Don't have an account? 
-                <Link to={"/signup"}>Signup</Link>
-            </p>
-          </div>
-        </div>
-
-      </form>
+    
   )
   
 }
