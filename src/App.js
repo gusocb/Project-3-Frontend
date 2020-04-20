@@ -84,6 +84,7 @@ function App() {
             <ProtectedRoute user={loggedInUser} path='/users/detail/:id' exact component={UserDetail} />
             <ProtectedRoute user={loggedInUser} path='/users/update/:id' exact component={UserUpdate} />
           </Switch>
+          <Footer/>
       </Router>
     )
   }

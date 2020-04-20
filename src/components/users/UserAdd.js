@@ -71,6 +71,7 @@ const UserAdd = props => {
                 <div class="control">
                     <div class="select">
                     <select name='role' onChange={e => handleChange(e)}>
+                        <option value=''>Select an option</option>
                         <option value='user'>User</option>
                         <option value='admin'>Admin</option>
                     </select>
