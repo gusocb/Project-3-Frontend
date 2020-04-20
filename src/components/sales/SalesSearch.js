@@ -110,9 +110,6 @@ const SaleSearch = props => {
         <div className='hero'>
             <div class='hero-body'>
                 <div className='container'>
-
-                    
-
                     <div className='tile is-ancestor'>
                         <div className='tile is-parent'>
                             <div className='tile is-child'>
