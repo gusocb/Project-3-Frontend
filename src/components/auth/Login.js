@@ -1,31 +1,34 @@
 import React, { useState } from 'react';
 import AuthService from './auth-services';
 import { Link, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form'
+
 
 const Login = props => {
 
-    const [state, setState] = useState({ username: '', password: '' })
+    // const [state, setState] = useState({ username: '', password: '' })
     const service = new AuthService();
     const history = useHistory()
+    const { register,errors, handleSubmit } = useForm()
   
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const username = state.username;
-    const password = state.password;
+  const onSubmit = (data) => {
+    // event.preventDefault();
+    const username = data.username;
+    const password = data.password;
     service.login(username, password)
     .then( response => {
-        setState({ username: "", password: "" });
+        // setState({ username: "", password: "" });
         props.getUser(response)
     })
     .then(() => history.push('/dashboard'))
     .catch( error => console.log(error) )
   }
     
-  const handleChange = (event) => {  
-    const { name, value } = event.target;
-    setState(Object.assign({}, state, {[name]: value}))
-  }
+  // const handleChange = (event) => {  
+  //   const { name, value } = event.target;
+  //   setState(Object.assign({}, state, {[name]: value}))
+  // }
     
   return(
     <section className='hero'>
@@ -34,18 +37,40 @@ const Login = props => {
         <div className='columns is-centered'>
           <div className='column is-5-tablet is-4-desktop is-3-widescreen'>
             
-            <form onSubmit={handleFormSubmit} className='box'>
+            <form onSubmit={handleSubmit(onSubmit)} className='box'>
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
-                  <input className="input" type="text" name="username" value={state.username} onChange={ e => handleChange(e)} placeholder='example@mail.com'/>
+                  <input 
+                    className="input" 
+                    type="text" 
+                    name="username" 
+                    // value={state.username} 
+                    // onChange={ e => handleChange(e)} 
+                    placeholder='example@mail.com'
+                    ref={register({
+                      required:true,
+                      pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                  })}
+                  />
+                  {errors.username?.type === "required" && <p className='error-form'>Email is required</p>}
+                  {errors.username?.type === "pattern" && <p className='error-form'>That's not a valid email</p>}
                 </div>
               </div>
 
               <div className="field">
                 <label className="label">Password</label>
                 <div className="control">
-                  <input className="input" type="password" name="password" value={state.password} onChange={ e => handleChange(e)} placeholder='Your password here'/>
+                  <input 
+                    className="input" 
+                    type="password" 
+                    name="password" 
+                    // value={state.password} 
+                    // onChange={ e => handleChange(e)} 
+                    placeholder='Your password here'
+                    ref={register({required:true})}
+                  />
+                  {errors.password && <p className='error-form'>Password is required</p>}
                 </div>
               </div>
 
