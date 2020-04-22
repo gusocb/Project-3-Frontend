@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AuthService from './auth-services';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
 
 
 const Signup = props => {
@@ -38,7 +39,25 @@ const Signup = props => {
         props.getUser(response)
     })
     .then(() => history.push('/dashboard'))
-    .catch( error => console.log(error.data) )
+    .catch( error => {
+      console.log(error)
+      if(error.response.status===401){
+        Swal.fire({
+          title: "Error!",
+          text: 'Email already asociated with another account',
+          icon: 'warning',
+          confirmButtonText: 'Try another one'
+        })
+      }
+      else{
+        Swal.fire({
+          title: "Error!",
+          text: 'Something went wrong',
+          icon: 'error',
+          confirmButtonText: 'Try again'
+        })
+      }
+    } )
   }
   
   // const handleChange = (event) => {  

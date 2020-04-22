@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AuthService from './auth-services';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
 
 
 const Login = props => {
@@ -22,7 +23,15 @@ const Login = props => {
         props.getUser(response)
     })
     .then(() => history.push('/dashboard'))
-    .catch( error => console.log(error) )
+    .catch( error => {
+      console.log(error)
+      Swal.fire({
+        title: "Can't login!",
+        text: 'Email or password incorrect',
+        icon: 'error',
+        confirmButtonText: 'Try again'
+      })
+    } )
   }
     
   // const handleChange = (event) => {  

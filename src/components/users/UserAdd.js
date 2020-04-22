@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import 'bulma/css/bulma.css';
 import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
+
 
 
 const UserAdd = props => {
@@ -36,9 +38,30 @@ const UserAdd = props => {
             //     password: '',
             //     role:''
             // })
+            Swal.fire({
+                title: "User Created!",
+                icon: 'success',
+              })
         })
-        // .then(console.log(formState))
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            if(err.response.status===401){
+                Swal.fire({
+                    title: "Wow!",
+                    text: 'Email already asociated with another account',
+                    icon: 'warning',
+                    confirmButtonText: 'Try another one'
+                })
+            }
+            else{
+                Swal.fire({
+                    title: "Error!",
+                    text: 'Something went wrong',
+                    icon: 'error',
+                    confirmButtonText: 'Try again'
+                })
+            }
+        })
     }
 
     return(

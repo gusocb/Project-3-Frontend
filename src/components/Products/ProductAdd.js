@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import 'bulma/css/bulma.css';
 import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
+
 
 
 
@@ -34,8 +36,30 @@ const ProductAdd = props =>{
             //     stock: '',
             //     store:props.user.store
             // })
+            Swal.fire({
+                title: "Product Created!",
+                icon: 'success',
+              })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            if(err.response.status===401){
+                Swal.fire({
+                    title:'Ups!',
+                    text:'Barcode already use',
+                    icon:'warning',
+                    confirmButtonText: 'Try another one'
+                })
+            }
+            else{
+                Swal.fire({
+                    title:'Error!',
+                    text:'Something went bad',
+                    icon:'error',
+                    confirmButtonText: 'Try again'
+                })  
+            }
+        })
     }
 
     return(
