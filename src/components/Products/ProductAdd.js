@@ -4,9 +4,6 @@ import 'bulma/css/bulma.css';
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 
-
-
-
 const ProductAdd = props =>{
 
     // const [formState, updateFormState] = useState({
@@ -39,7 +36,9 @@ const ProductAdd = props =>{
             Swal.fire({
                 title: "Product Created!",
                 icon: 'success',
-              })
+            })
+            
+            document.getElementById("product-add-form").reset();
         })
         .catch(err => {
             console.log(err)
@@ -63,7 +62,7 @@ const ProductAdd = props =>{
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className='box'>
+        <form id='product-add-form' onSubmit={handleSubmit(onSubmit)} className='box'>
             <div className="field">
                 <label className="label">Barcode</label>
                 <div class="control">

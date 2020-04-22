@@ -41,7 +41,8 @@ const UserAdd = props => {
             Swal.fire({
                 title: "User Created!",
                 icon: 'success',
-              })
+            })
+            document.getElementById('user-add-form').reset()
         })
         .catch(err => {
             console.log(err)
@@ -65,7 +66,7 @@ const UserAdd = props => {
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className='box'>
+        <form id='user-add-form' onSubmit={handleSubmit(onSubmit)} className='box'>
             <div className="field">
                 <label className="label">Name</label>
                 <div class="control">
