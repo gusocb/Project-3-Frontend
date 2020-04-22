@@ -14,6 +14,7 @@ const Reports = props => {
         .catch(err => console.log(err))
     }
 
+    console.log(sales)
     useEffect(() => {
         getAllSales()
     }, [])
@@ -53,7 +54,8 @@ const Reports = props => {
                                                 })}
                                             
                                             <p>Total ${sale.total}</p>
-                                            <p>Made by {sale.owner}</p>
+                                            <p>Made by {sale.salesMan.name}</p>
+                                            <p> {sale.createdAt}</p>
                                         </table>
                                     </div>
                                 </div>

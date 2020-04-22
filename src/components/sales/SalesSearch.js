@@ -95,7 +95,7 @@ const SaleSearch = props => {
         let saleObj = new Object()
         saleObj.sale=saleList
         saleObj.total=total
-        saleObj.owner=props.loggedInUser._id
+        saleObj.salesMan=props.loggedInUser._id
         saleObj.store=props.loggedInUser.store
 
 
