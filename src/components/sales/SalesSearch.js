@@ -14,9 +14,6 @@ const SaleSearch = props => {
     const [saleList, updateSalesList] = useState([]);
 
     const [total, updateTotal] = useState(0);
-
-    // const [notFound, toggleNotFound] = useState(false)
-
     
     const getAllProducts = () => {
         axios.get('http://localhost:5000/api/products', {withCredentials:true})
@@ -76,9 +73,6 @@ const SaleSearch = props => {
         }
     }
 
-    
-    
-
     const calculateTotal = () => {
         let sum =0;
         saleList.forEach(ele => {
@@ -132,11 +126,11 @@ const SaleSearch = props => {
                                                     <td>${product.price}</td>
                                                     <td>{product.newStock}</td>
                                                     <td>
-                                                        <button className='button is-primary is-light is-small' onClick={()=>product.quantity--}>
+                                                        <button className='button is-primary is-light is-small' >
                                                             -
                                                         </button>
                                                         {product.quantity}
-                                                        <button className='button is-primary is-light is-small'onClick={()=>product.quantity++}>
+                                                        <button className='button is-primary is-light is-small' >
                                                             +
                                                         </button>
                                                     </td>
