@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
 import 'bulma/css/bulma.css';
-
+import {MyContext} from '../../contexts/CashContext';
 
 const SaleSearch = props => {
+    let saleObj = new Object()
 
     const [searchState, updateSearchState] = useState({
         search:'',
@@ -15,8 +16,7 @@ const SaleSearch = props => {
 
     const [total, updateTotal] = useState(0);
 
-    // const [notFound, toggleNotFound] = useState(false)
-
+   const { sales, setSales } = useContext(MyContext)
     
     const getAllProducts = () => {
         axios.get('http://localhost:5000/api/products', {withCredentials:true})
@@ -92,21 +92,24 @@ const SaleSearch = props => {
     });
 
     const checkout = () => {
-        let saleObj = new Object()
         saleObj.sale=saleList
         saleObj.total=total
         saleObj.salesMan=props.loggedInUser._id
         saleObj.store=props.loggedInUser.store
-
+        setSales(saleObj)
 
         axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
-        .then( ()=> {
-            updateSalesList([])
+        .then( ()  => {
+            updateSalesList([]);
+            console.log("si se guarda que vergas")
         })
+         
         .catch(err => console.log(err)) 
+        return saleObj;
     }
 
     return(
+        
         <div className='hero'>
             <div class='hero-body'>
                 <div className='container'>
@@ -172,6 +175,7 @@ const SaleSearch = props => {
                 </div>
             </div>
         </div>
+    
 
 
 

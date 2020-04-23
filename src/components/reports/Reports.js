@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import 'bulma/css/bulma.css';
+import CashClose from './CashClose'
 
 const Reports = props => {
 
@@ -67,7 +68,7 @@ const Reports = props => {
 
 
                 <div className="column">
-                    Here goes some other information, maybe the cash closure
+                    <CashClose></CashClose>
                 </div>
             </div>
         </div>

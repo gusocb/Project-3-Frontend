@@ -21,6 +21,7 @@ import UserDetail from './components/users/UserDetail'
 import UserUpdate from './components/users/UserUpdate'
 import Reports from './components/reports/Reports'
 import Footer from './components/navigation/Footer'
+import {MyContext} from './contexts/CashContext';
 
 
 
@@ -49,9 +50,10 @@ function App() {
   }
   
   fetchUser()
-  
+  const [sales, setSales] = useState({})
   if(loggedInUser){
     return (
+      <MyContext.Provider value={{sales, setSales}}>
       <Router>
             <NavBar getUser={getTheUser} userInSession={loggedInUser}/>
             <Switch>
@@ -69,6 +71,7 @@ function App() {
             <Footer/>
 
       </Router>
+      </MyContext.Provider>
     )
   }
   else {
