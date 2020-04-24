@@ -6,61 +6,57 @@ const Home = props => {
         <div className="hero-body">
             <div className="container has-text-centered">
                 <h1 className="title">
-                The new standard in Retail Administration
+                    Grow your retail faster with Kwik-E POS software
                 </h1>
                 <h2 className="subtitle">
-                    Improve your business with 
+                    Kwik-E POS is a leading retail POS software in the cloud with everything you need to run & grow your business.
                 </h2>
             </div>
         </div>
 
         <div class="box cta">
             <p class="has-text-centered">
-                <span class="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <span class="tag is-primary">Feature</span> User roles for differents tasks.
             </p>
         </div>
         
         <section className='container'>
             <div className="columns features">
                 <div className="column is-4">
-                    <div className="card is-shady">
+                    <div className="card is-shady" id='home-card'>
                         <div className="card-image has-text-centered">
-                            <i className="fa fa-paw"></i>
+                            <img src='https://images.ctfassets.net/txhaodyqr481/IZHRO10qVci6pUdKOm31A/99ed7d74c8f7221becf37e016071ca39/shutterstock_687139360.jpg?fm=jpg&fl=progressive'/>
                         </div>
                         <div className="card-content">
                             <div className="content">
-                                <h4>Tristique senectus et netus et. </h4>
-                                <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
-                                <p><a href="#">Learn more</a></p>
+                                <h4>Controll your sales</h4>
+                                <p> Barcode implementation, organizing your products have never been easier.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="column is-4">
-                    <div className="card is-shady">
+                    <div className="card is-shady" id='home-card'>
                         <div className="card-image has-text-centered">
-                            <i className="fa fa-empire"></i>
+                            <img src='https://h7f7z2r7.stackpathcdn.com/sites/default/files/images/articles/blakcstonemain.jpg'/>
                         </div>
                         <div className="card-content">
                             <div className="content">
-                                <h4>Tempor orci dapibus ultrices in.</h4>
-                                <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
-                                sed risus.</p>
-                                <p><a href="#">Learn more</a></p>
+                                <h4> Manage your inventory </h4>
+                                <p>Mantain your stock updated in real time.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="column is-4">
-                    <div className="card is-shady">
+                    <div className="card is-shady" id='home-card'>
                         <div className="card-image has-text-centered">
-                            <i className="fa fa-apple"></i>
+                            <img src='https://cdn.aarp.net/content/dam/aarp/home-and-family/family-and-friends/2015-04/1140-Personal-Finance-101-esp.imgcache.revb75b936630f806a6f5a20e0e781f9873.jpg'/>
                         </div>
                         <div className="card-content">
                             <div className="content">
-                                <h4> Leo integer malesuada nunc vel risus. </h4>
-                                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                                <p><a href="#">Learn more</a></p>
+                                <h4> Keep track of your income </h4>
+                                <p>Generate daily reports of all your sales.</p>
                             </div>
                         </div>
                     </div>
@@ -68,8 +64,8 @@ const Home = props => {
             </div>
 
             <div className="intro column is-8 is-offset-2" id='cfr'>
-                    <h2 className="title">Perfect for developers or designers!</h2><br/>
-                    <p className="subtitle">Vel fringilla est ullamcorper eget nulla facilisi. Nulla facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus.</p>
+                    <h2 className="title">Perfect POS software for most retail stores</h2><br/>
+                    <p className="subtitle">Kwik-E POS is perfect for .</p>
                 </div>
         </section>
         </Fragment>

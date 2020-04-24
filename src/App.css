@@ -82,3 +82,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+#home-card{
+  height: 50vh;
+}
