@@ -23,7 +23,7 @@ const UserList = props =>{
     return (
         <div className='container'>
             <div className='columns'>
-                <div className='column'>
+                <div className='column' id='user-table'>
                     <table className='table is-striped is-fullwidth'>
                         <thead>
                             <tr>

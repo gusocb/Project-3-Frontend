@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bulma/css/bulma.css';
-
+import Swal from 'sweetalert2'
 
 const SaleSearch = props => {
 
@@ -44,6 +44,11 @@ const SaleSearch = props => {
         })
 
         if(!filteredProduct[0]){
+            Swal.fire({
+                title: "Ups!",
+                text:'Enter a valid barcode',
+                icon: 'warning'
+            })
         }
         else {
 
@@ -105,7 +110,7 @@ const SaleSearch = props => {
             <div class='hero-body'>
                 <div className='container'>
                     <div className='tile is-ancestor'>
-                        <div className='tile is-parent'>
+                        <div className='tile is-parent' id='sale-table'>
                             <div className='tile is-child'>
                                 <table className='table is-fullwidth'>
                                     <thead>

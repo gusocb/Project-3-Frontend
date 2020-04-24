@@ -49,8 +49,9 @@ const Reports = props => {
     return(
         <div className='container'>
             <div className="columns">
-                <div className="column">
+                <div className="column" >
                     <p className='title is-2'>All sales</p>
+                    <div className='container' id='reports-sale-column'>
                     {
                         sales.map(sale => {
                             return(
@@ -90,6 +91,7 @@ const Reports = props => {
                         })
                         
                     }
+                    </div>
                 </div>
 
 
@@ -97,6 +99,7 @@ const Reports = props => {
                     <p className='title is-2'>Sales by date</p>
                     <p className='title is-4'>Pick a date</p>
                     <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                        <div id='reports-table'>
                         <table className='table is-striped is-fullwidth'>
                             <thead>
                                 <tr>
@@ -116,7 +119,8 @@ const Reports = props => {
                                 })}
                             </tbody>
                         </table>
-                        <p className='subtitle is-1'>Day's Sales: ${totalDay}</p>
+                        </div>
+                        <p className='title is-3'>Day's Sales: ${totalDay}</p>
 
                 </div>
             </div>

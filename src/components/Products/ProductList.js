@@ -24,7 +24,7 @@ const ProductList = props =>{
         return (
             <div className='container'>
                 <div className='columns'>
-                    <div className='column'>
+                    <div className='column' id='product-table'>
                         <table className='table is-striped is-fullwidth'>
                             <thead>
                                 <tr>

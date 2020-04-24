@@ -1,10 +1,78 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Home = props => {
     return(
-        <div className='container'>
-            This is the Home page
+        <Fragment>
+        <div className="hero-body">
+            <div className="container has-text-centered">
+                <h1 className="title">
+                The new standard in Retail Administration
+                </h1>
+                <h2 className="subtitle">
+                    Improve your business with 
+                </h2>
+            </div>
         </div>
+
+        <div class="box cta">
+            <p class="has-text-centered">
+                <span class="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        
+        <section className='container'>
+            <div className="columns features">
+                <div className="column is-4">
+                    <div className="card is-shady">
+                        <div className="card-image has-text-centered">
+                            <i className="fa fa-paw"></i>
+                        </div>
+                        <div className="card-content">
+                            <div className="content">
+                                <h4>Tristique senectus et netus et. </h4>
+                                <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut consequat semper viverra nam.</p>
+                                <p><a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="column is-4">
+                    <div className="card is-shady">
+                        <div className="card-image has-text-centered">
+                            <i className="fa fa-empire"></i>
+                        </div>
+                        <div className="card-content">
+                            <div className="content">
+                                <h4>Tempor orci dapibus ultrices in.</h4>
+                                <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas cmonsu songue. Phasellus vestibulum lorem
+                                sed risus.</p>
+                                <p><a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="column is-4">
+                    <div className="card is-shady">
+                        <div className="card-image has-text-centered">
+                            <i className="fa fa-apple"></i>
+                        </div>
+                        <div className="card-content">
+                            <div className="content">
+                                <h4> Leo integer malesuada nunc vel risus. </h4>
+                                <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                                <p><a href="#">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="intro column is-8 is-offset-2" id='cfr'>
+                    <h2 className="title">Perfect for developers or designers!</h2><br/>
+                    <p className="subtitle">Vel fringilla est ullamcorper eget nulla facilisi. Nulla facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus.</p>
+                </div>
+        </section>
+        </Fragment>
     )
 }
 

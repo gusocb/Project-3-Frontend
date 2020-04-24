@@ -37,16 +37,48 @@
   }
 }
 
-.footer {
+#general-footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
+  height: 40px;
+  background-color:#66838B;
   color: white;
   text-align: center;
 }
 
 .error-form{
   color: red;
+}
+
+#reports-sale-column{
+  overflow: auto;
+  height: 85vh;
+}
+
+#reports-table{
+  overflow: auto;
+  height: 50vh;
+}
+
+#sale-table{
+  overflow: auto;
+  height: 70vh;
+}
+
+#product-table{
+  overflow: auto;
+  height: 80vh;
+}
+
+#user-table{
+  overflow: auto;
+  height: 80vh;
+}
+
+#cfr{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
