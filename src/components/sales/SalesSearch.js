@@ -50,6 +50,13 @@ const SaleSearch = props => {
                 icon: 'warning'
             })
         }
+        if(filteredProduct[0].stock===0){
+            Swal.fire({
+                title: "Ups!",
+                text:'This product is out of stock',
+                icon: 'warning'
+            })
+        }
         else {
 
             const productArray = saleList.filter(ele=>{
@@ -98,7 +105,7 @@ const SaleSearch = props => {
         saleObj.store=props.loggedInUser.store
 
 
-        axios.post('http://localhost:5000/api/checkout', saleObj, {withCredentials:true})
+        axios.post(`${process.env.REACT_APP_API_URL}/checkout`, saleObj, {withCredentials:true})
         .then( ()=> {
             updateSalesList([])
         })
@@ -116,12 +123,17 @@ const SaleSearch = props => {
                 ele.quantity+=value
                 ele.subtotal = ele.quantity * ele.price;
                 ele.newStock = ele.stock-ele.quantity
-
+                if(ele.quantity>=ele.stock){
+                    ele.quantity=ele.stock
+                    ele.newStock=0
+                }
             }
             return ele
         })
-
+        
         updateSalesList(newList)
+
+
     }
     return(
         <div className='hero'>

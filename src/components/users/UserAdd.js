@@ -8,36 +8,14 @@ import Swal from 'sweetalert2'
 
 const UserAdd = props => {
 
-    // const [formState, updateFormState] = useState({
-    //     name:'',
-    //     lastname: '',
-    //     store:props.user.store,
-    //     username: '',
-    //     password: '',
-    //     role:''
-    // })
-
-    // const handleChange = (event) => {  
-    //     const { name, value } = event.target;
-    //     updateFormState(Object.assign({}, formState, {[name]: value}))
-    // }
 
     const { register,errors, handleSubmit } = useForm()
 
     const onSubmit = data => {
-        // event.preventDefault();
         data.store=props.user.store
         axios.post(`${process.env.REACT_APP_API_URL}/users/add`,data, {withCredentials:true})
         .then( ()=>{
             props.getData();
-            // updateFormState({
-            //     name:'',
-            //     lastname: '',
-            //     store:props.user.store,
-            //     username: '',
-            //     password: '',
-            //     role:''
-            // })
             Swal.fire({
                 title: "User Created!",
                 icon: 'success',
@@ -73,8 +51,6 @@ const UserAdd = props => {
                     <input className="input" 
                     name='name' 
                     type="text" 
-                    // value={formState.name}
-                    // onChange={e => handleChange(e)} 
                     ref={register({required:true})}
                     />
                     {errors.name && <p className='error-form'>A name is required</p>}
@@ -86,8 +62,6 @@ const UserAdd = props => {
                 <div className="control">
                     <input className="input" 
                     name='lastname' type="text" 
-                    // value={formState.lastname} 
-                    // onChange={e => handleChange(e)}
                     ref={register({required:true})}
                     />
                     {errors.lastname && <p className='error-form'>A lastname is required</p>}
@@ -100,8 +74,6 @@ const UserAdd = props => {
                     <input className="input" 
                     name='username' 
                     type="text" 
-                    // value={formState.username} 
-                    // onChange={e => handleChange(e)}
                     ref={register({
                         required:true,
                         pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -119,8 +91,6 @@ const UserAdd = props => {
                     <input className="input" 
                     name='password' 
                     type="password" 
-                    // value={formState.password} 
-                    // onChange={e => handleChange(e)}
                     ref={register({
                         required:true,
                         minLength:8
@@ -136,7 +106,6 @@ const UserAdd = props => {
                 <div class="control">
                     <div class="select">
                     <select name='role' 
-                    // onChange={e => handleChange(e)}
                     ref={register({required:true})}
                     >
                         <option value=''>Select an option</option>

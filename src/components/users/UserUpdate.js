@@ -32,13 +32,8 @@ const UserUpdate = () =>{
         .catch(err => console.log(err))
     }
 
-    // const handleChange = (event) => {  
-    //     const { name, defaultdefaultValue } = event.target;
-    //     updateFormState(Object.assign({}, formState, {[name]: defaultdefaultValue}))
-    // }
 
     const onSubmit = data => {
-        // event.preventDefault();
         axios.put(`${process.env.REACT_APP_API_URL}/users/detail/${id}`,data, {withCredentials:true})
         .then(() => {
             Swal.fire({
@@ -64,7 +59,6 @@ const UserUpdate = () =>{
                         name='name' 
                         type="text" 
                         defaultValue={formState.name}
-                        // onChange={e => handleChange(e)} 
                         ref={register({required:true})}
                         />
                         {errors.name && <p className='error-form'>A name is required</p>}
@@ -77,7 +71,6 @@ const UserUpdate = () =>{
                         <input className="input" 
                         name='lastname' type="text" 
                         defaultValue={formState.lastname} 
-                        // onChange={e => handleChange(e)}
                         ref={register({required:true})}
                         />
                         {errors.lastname && <p className='error-form'>A lastname is required</p>}
@@ -91,7 +84,6 @@ const UserUpdate = () =>{
                         name='username' 
                         type="text" 
                         defaultValue={formState.username} 
-                        // onChange={e => handleChange(e)}
                         ref={register({
                             required:true,
                             pattern:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -110,7 +102,6 @@ const UserUpdate = () =>{
                         name='password' 
                         type="password" 
                         defaultValue={formState.password} 
-                        // onChange={e => handleChange(e)}
                         ref={register({
                             required:true,
                             minLength:8
@@ -126,7 +117,6 @@ const UserUpdate = () =>{
                     <div class="control">
                         <div class="select">
                         <select name='role' 
-                        // onChange={e => handleChange(e)}
                         ref={register({required:true})}
                         >
                             <option value=''>Select an option</option>

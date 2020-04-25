@@ -65,7 +65,7 @@ const NavBar = props => {
                             <div className="navbar-menu">
                                 <div className="navbar-start">
                                     <div className='navbar-item'><strong>{props.userInSession.name}'s Session</strong></div>
-                                    <Link className="navbar-item" to='/dashboard'>Dashboard</Link>
+                                    <Link className="navbar-item" to='/dashboard'>Profile</Link>
                                     <Link className="navbar-item" to='/products'>Products</Link>
                                     <Link className="navbar-item" to='/sales'>Sales</Link>
                                 </div>

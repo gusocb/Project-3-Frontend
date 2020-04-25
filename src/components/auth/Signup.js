@@ -8,13 +8,6 @@ import Swal from 'sweetalert2'
 const Signup = props => {
 
 
-  // const [state, setState] = useState({
-  //      name: '', 
-  //      lastname: '', 
-  //      store: '', 
-  //      username: '',
-  //      password: '' 
-  // })
   const service = new AuthService();
   const history = useHistory()
   const { register,errors, handleSubmit } = useForm()
@@ -29,13 +22,6 @@ const Signup = props => {
   
     service.signup(name, lastname, store, username, password)
     .then( response => {
-        // setState({
-        //     name: "", 
-        //     lastname: "",
-        //     store: "",
-        //     username: "",
-        //     password: "",
-        // });
         props.getUser(response)
     })
     .then(() => history.push('/dashboard'))
@@ -60,10 +46,6 @@ const Signup = props => {
     } )
   }
   
-  // const handleChange = (event) => {  
-  //   const { name, value } = event.target;
-  //   setState(Object.assign({}, state, {[name]: value}))
-  // }
       
   
   return(
@@ -80,7 +62,6 @@ const Signup = props => {
                     <input className="input" 
                     type="text" 
                     name="name" 
-                    /* value={state.name} onChange={ e => handleChange(e)} */ 
                     placeholder='Frodo' 
                     ref={register({required:true})}/>
                     {errors.name && <p className='error-form'>A name is required</p>}
@@ -93,7 +74,6 @@ const Signup = props => {
                     <input className="input" 
                     type="text" 
                     name="lastname" 
-                    /* value={state.lastname} onChange={ e => handleChange(e)} */ 
                     placeholder='Baggins' 
                     ref={register({required:true})}/>
                     {errors.lastname && <p className='error-form'>A lastname is required</p>}
@@ -106,7 +86,6 @@ const Signup = props => {
                     <input className="input" 
                     type="text" 
                     name="store" 
-                    /* value={state.store} onChange={ e => handleChange(e)} */ 
                     placeholder='The Green Dragon' 
                     ref={register({required:true})}/>
                     {errors.store && <p className='error-form'>A store name is required</p>}
@@ -119,7 +98,6 @@ const Signup = props => {
                     <input className="input" 
                     type="text" 
                     name="username" 
-                    /* value={state.username} onChange={ e => handleChange(e)} */ 
                     placeholder='example@mail.com' 
                     ref={register({
                       required:true,
@@ -136,7 +114,7 @@ const Signup = props => {
                   <div className="control">
                     <input className="input" 
                     type="password" 
-                    name="password" /* value={state.password} onChange={ e => handleChange(e)} */ 
+                    name="password" 
                     placeholder='Must be 8 or more characters' 
                     ref={register({required:true,minLength:8})}/>
                     {errors.password?.type === "required" && <p className='error-form'>A password is required</p>}

@@ -6,33 +6,13 @@ import Swal from 'sweetalert2'
 
 const ProductAdd = props =>{
 
-    // const [formState, updateFormState] = useState({
-    //     barcode:'',
-    //     name: '',
-    //     price: '',
-    //     stock: '',
-    //     store:props.user.store
-    // })
-
-    // const handleChange = (event) => {  
-    //     const { name, value } = event.target;
-    //     updateFormState(Object.assign({}, formState, {[name]: value}))
-    // }
     const { register,errors, handleSubmit } = useForm()
 
     const onSubmit = data => {
-        // event.preventDefault();
         data.store=props.user.store
         axios.post(`${process.env.REACT_APP_API_URL}/products/add`, data, {withCredentials:true})
         .then( ()=>{
             props.getData();
-            // updateFormState({
-            //     barcode:'',
-            //     name: '',
-            //     price: '',
-            //     stock: '',
-            //     store:props.user.store
-            // })
             Swal.fire({
                 title: "Product Created!",
                 icon: 'success',
@@ -69,8 +49,6 @@ const ProductAdd = props =>{
                     <input className="input" 
                     name='barcode' 
                     type="text" 
-                    // value={formState.barcode} 
-                    // onChange={e => handleChange(e)}
                     ref={register({required:true})}
                     />
                     {errors.barcode && <p className='error-form'>A product barcode is required</p>}
@@ -83,8 +61,6 @@ const ProductAdd = props =>{
                     <input className="input" 
                     name='name' 
                     type="text" 
-                    // value={formState.name} 
-                    // onChange={e => handleChange(e)} 
                     ref={register({required:true})}
                     />
                     {errors.name && <p className='error-form'>A product name is required</p>}
@@ -97,8 +73,6 @@ const ProductAdd = props =>{
                     <input className="input" 
                     name='price' 
                     type="text" 
-                    // value={formState.price} 
-                    // onChange={e => handleChange(e)}
                     ref={register({required:true, pattern:/[0-9]/})}
                     />
                     {errors.price?.type === "required" && <p className='error-form'>A price quantity is required</p>}
@@ -112,8 +86,6 @@ const ProductAdd = props =>{
                     <input className="input" 
                     name='stock' 
                     type="text" 
-                    // value={formState.stock} 
-                    // onChange={e => handleChange(e)}
                     ref={register({required:true,pattern:/[0-9]/})}
                     />
                     {errors.stock?.type === "required" && <p className='error-form'>A stock quantity is required</p>}

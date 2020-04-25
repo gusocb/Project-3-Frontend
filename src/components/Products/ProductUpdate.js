@@ -31,13 +31,8 @@ const ProductUpdate = () =>{
         .catch(err => console.log(err))
     }
 
-    // const handleChange = (event) => {  
-    //     const { name, defaultValue } = event.target;
-    //     updateFormState(Object.assign({}, formState, {[name]: defaultValue}))
-    // }
 
     const onSubmit = data => {
-        // event.preventDefault();
         axios.put(`${process.env.REACT_APP_API_URL}/products/detail/${id}`,data, {withCredentials:true})
         .then(() => {
             Swal.fire({
@@ -64,7 +59,6 @@ const ProductUpdate = () =>{
                         name='barcode' 
                         type="text" 
                         defaultValue={formState.barcode} 
-                        // onChange={e => handleChange(e)}
                         ref={register({required:true})}
                         />
                         {errors.barcode && <p className='error-form'>A product barcode is required</p>}
@@ -78,7 +72,6 @@ const ProductUpdate = () =>{
                         name='name' 
                         type="text" 
                         defaultValue={formState.name} 
-                        // onChange={e => handleChange(e)} 
                         ref={register({required:true})}
                         />
                         {errors.name && <p className='error-form'>A product name is required</p>}
@@ -92,7 +85,6 @@ const ProductUpdate = () =>{
                         name='price' 
                         type="text" 
                         defaultValue={formState.price} 
-                        // onChange={e => handleChange(e)}
                         ref={register({required:true, pattern:/[0-9]/})}
                         />
                         {errors.price?.type === "required" && <p className='error-form'>A price quantity is required</p>}
@@ -107,7 +99,6 @@ const ProductUpdate = () =>{
                         name='stock' 
                         type="text" 
                         defaultValue={formState.stock} 
-                        // onChange={e => handleChange(e)}
                         ref={register({required:true,pattern:/[0-9]/})}
                         />
                         {errors.stock?.type === "required" && <p className='error-form'>A stock quantity is required</p>}

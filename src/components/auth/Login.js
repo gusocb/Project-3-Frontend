@@ -7,19 +7,16 @@ import Swal from 'sweetalert2'
 
 const Login = props => {
 
-    // const [state, setState] = useState({ username: '', password: '' })
     const service = new AuthService();
     const history = useHistory()
     const { register,errors, handleSubmit } = useForm()
   
 
   const onSubmit = (data) => {
-    // event.preventDefault();
     const username = data.username;
     const password = data.password;
     service.login(username, password)
     .then( response => {
-        // setState({ username: "", password: "" });
         props.getUser(response)
     })
     .then(() => history.push('/dashboard'))
@@ -34,10 +31,6 @@ const Login = props => {
     } )
   }
     
-  // const handleChange = (event) => {  
-  //   const { name, value } = event.target;
-  //   setState(Object.assign({}, state, {[name]: value}))
-  // }
     
   return(
     <section className='hero'>
@@ -54,8 +47,6 @@ const Login = props => {
                     className="input" 
                     type="text" 
                     name="username" 
-                    // value={state.username} 
-                    // onChange={ e => handleChange(e)} 
                     placeholder='example@mail.com'
                     ref={register({
                       required:true,
@@ -74,8 +65,6 @@ const Login = props => {
                     className="input" 
                     type="password" 
                     name="password" 
-                    // value={state.password} 
-                    // onChange={ e => handleChange(e)} 
                     placeholder='Your password here'
                     ref={register({required:true})}
                   />
