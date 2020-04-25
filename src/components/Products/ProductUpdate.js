@@ -24,7 +24,7 @@ const ProductUpdate = () =>{
     },[]);
 
     const getSingleProduct = () => {
-        axios.get(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/products/detail/${id}`, {withCredentials:true})
         .then( response => {
             updateFormState(response.data)
         })
@@ -38,7 +38,7 @@ const ProductUpdate = () =>{
 
     const onSubmit = data => {
         // event.preventDefault();
-        axios.put(`http://localhost:5000/api/products/detail/${id}`,data, {withCredentials:true})
+        axios.put(`${process.env.REACT_APP_API_URL}/products/detail/${id}`,data, {withCredentials:true})
         .then(() => {
             Swal.fire({
                 title:'Product updated',

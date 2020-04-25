@@ -21,7 +21,7 @@ const ProductDetail = () =>{
     },[]);
 
     const getSingleProduct = () => {
-        axios.get(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/products/detail/${id}`, {withCredentials:true})
         .then(response => {
             updateSingleProductState(response.data)
         })
@@ -50,7 +50,7 @@ const ProductDetail = () =>{
     }
 
     const deleteProduct = () => {
-        axios.delete(`http://localhost:5000/api/products/detail/${id}`, {withCredentials:true})
+        axios.delete(`${process.env.REACT_APP_API_URL}/products/detail/${id}`, {withCredentials:true})
         .then(() => {
             history.push('/products')
         })

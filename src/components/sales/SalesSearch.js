@@ -16,7 +16,7 @@ const SaleSearch = props => {
     const [total, updateTotal] = useState(0);
     
     const getAllProducts = () => {
-        axios.get('http://localhost:5000/api/products', {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/products`, {withCredentials:true})
         .then(res => {
             setProductList(res.data)
         })
@@ -105,6 +105,24 @@ const SaleSearch = props => {
         .catch(err => console.log(err)) 
     }
 
+    const deleteItem = index =>{
+        const newList = saleList.filter((ele, i) => i!==index)
+        updateSalesList(newList)
+    }
+
+    const modifyAmount = (index, value) =>{
+        const newList = saleList.map((ele,i) =>{
+            if(i===index){
+                ele.quantity+=value
+                ele.subtotal = ele.quantity * ele.price;
+                ele.newStock = ele.stock-ele.quantity
+
+            }
+            return ele
+        })
+
+        updateSalesList(newList)
+    }
     return(
         <div className='hero'>
             <div class='hero-body'>
@@ -124,23 +142,23 @@ const SaleSearch = props => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {saleList.map(product => {
+                                        {saleList.map((product,index) => {
                                             return (
                                                 <tr key={product._id}>
                                                     <td>{product.name}</td>
                                                     <td>${product.price}</td>
                                                     <td>{product.newStock}</td>
                                                     <td>
-                                                        <button className='button is-primary is-light is-small' >
+                                                        <button className='button is-primary is-light is-small' onClick={()=>modifyAmount(index,-1)}>
                                                             -
                                                         </button>
                                                         {product.quantity}
-                                                        <button className='button is-primary is-light is-small' >
+                                                        <button className='button is-primary is-light is-small' onClick={()=>modifyAmount(index,1)}>
                                                             +
                                                         </button>
                                                     </td>
                                                     <td>${product.subtotal}</td>
-                                                    <td><button className='button is-danger is-small'>Delete</button></td>
+                                                    <td><button className='button is-danger is-small' onClick={()=>deleteItem(index)}>Delete</button></td>
                                                 </tr>
                                             )
                                         })}

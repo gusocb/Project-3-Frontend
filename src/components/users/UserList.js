@@ -9,7 +9,7 @@ const UserList = props =>{
     const [listOfUsers, updateList] = useState([]);
 
     const getAllUsers = () => {
-        axios.get('http://localhost:5000/api/users', {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/users`, {withCredentials:true})
         .then(response => {
             updateList(response.data)
         })

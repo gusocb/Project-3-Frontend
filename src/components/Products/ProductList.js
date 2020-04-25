@@ -9,7 +9,7 @@ const ProductList = props =>{
     const [listOfProducts, updateList] = useState([]);
 
     const getAllProducts = () => {
-        axios.get('http://localhost:5000/api/products', {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/products`, {withCredentials:true})
         .then(response => {
             updateList(response.data)
         })

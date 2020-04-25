@@ -27,7 +27,7 @@ const UserAdd = props => {
     const onSubmit = data => {
         // event.preventDefault();
         data.store=props.user.store
-        axios.post('http://localhost:5000/api/users/add',data, {withCredentials:true})
+        axios.post(`${process.env.REACT_APP_API_URL}/users/add`,data, {withCredentials:true})
         .then( ()=>{
             props.getData();
             // updateFormState({

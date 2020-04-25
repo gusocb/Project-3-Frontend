@@ -25,7 +25,7 @@ const UserUpdate = () =>{
     },[]);
 
     const getSingleUser = () => {
-        axios.get(`http://localhost:5000/api/users/detail/${id}`, {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/users/detail/${id}`, {withCredentials:true})
         .then( response => {
             updateFormState(response.data)
         })
@@ -39,7 +39,7 @@ const UserUpdate = () =>{
 
     const onSubmit = data => {
         // event.preventDefault();
-        axios.put(`http://localhost:5000/api/users/detail/${id}`,data, {withCredentials:true})
+        axios.put(`${process.env.REACT_APP_API_URL}/users/detail/${id}`,data, {withCredentials:true})
         .then(() => {
             Swal.fire({
                 title:'User updated',

@@ -13,7 +13,7 @@ const Reports = props => {
     const [totalDay, updateTotal] = useState(0);
 
     const getAllSales = () => {
-        axios.get('http://localhost:5000/api/sales', {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/sales`, {withCredentials:true})
         .then(response => {
             updateSales(response.data)
         })

@@ -23,7 +23,7 @@ const UserDetail = () =>{
     },[]);
 
     const getSingleUser = () => {
-        axios.get(`http://localhost:5000/api/users/detail/${id}`, {withCredentials:true})
+        axios.get(`${process.env.REACT_APP_API_URL}/users/detail/${id}`, {withCredentials:true})
         .then(response => {
             updatesingleUser(response.data)
         })
@@ -31,7 +31,7 @@ const UserDetail = () =>{
     }
 
     const deleteUser = () => {
-        axios.delete(`http://localhost:5000/api/users/detail/${id}`, {withCredentials:true})
+        axios.delete(`${process.env.REACT_APP_API_URL}/users/detail/${id}`, {withCredentials:true})
         .then(() => {
             history.push('/users')
         })
