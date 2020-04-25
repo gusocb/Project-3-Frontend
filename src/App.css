@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #eff3f4;
 }
 
 .App-logo {
@@ -54,7 +55,7 @@
 
 #reports-sale-column{
   overflow: auto;
-  height: 85vh;
+  height: 80vh;
 }
 
 #reports-table{
@@ -85,4 +86,12 @@
 
 #home-card{
   height: 50vh;
+}
+
+#home-card-img{
+  height:300px;
+}
+
+.card{
+  padding: 15px;
 }

@@ -63,18 +63,23 @@ const UserDetail = () =>{
     
     return (
         <div className='container'>
-            <div className='card'>
-                <div className='card-content'>
-                    <p className='title is-'>{singleUser.store}</p>
-                    <p className='title is-2'>{singleUser.name}</p>
-                    <p className='subtitle is-2'>{singleUser.lastname}</p>
-                    <p className='title is-3'>{singleUser.username}</p>
-                    <p className='subtitle is-3'>{singleUser.role==='admin'?'Administrator':'User'}</p>
+            <div className='columns is-centered'>
+                <div className='column is-7'>
+
+                    <div className='card'>
+                        <div className='card-content'>
+                            <p className='title is-'>Store: {singleUser.store}</p>
+                            <p className='title is-2'>Name: {singleUser.name}</p>
+                            <p className='subtitle is-2'>Lastname: {singleUser.lastname}</p>
+                            <p className='title is-3'>Email: {singleUser.username}</p>
+                            <p className='subtitle is-3'>Role: {singleUser.role==='admin'?'Administrator':'User'}</p>
+                        </div>
+                        <footer class="card-footer">
+                            <button  className="card-footer-item button is-link is-outlined"><Link to={'/users/update/'+id}>Edit</Link></button>
+                            <button onClick={deleteConfirm}  className="card-footer-item button is-danger is-outlined" >Delete</button>
+                        </footer>
+                    </div>
                 </div>
-                <footer class="card-footer">
-                    <button  className="card-footer-item button is-link is-outlined"><Link to={'/users/update/'+id}>Edit</Link></button>
-                    <button onClick={deleteConfirm}  className="card-footer-item button is-danger is-outlined" >Delete</button>
-                </footer>
             </div>
         </div>
     )

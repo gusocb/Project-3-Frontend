@@ -61,17 +61,22 @@ const ProductDetail = () =>{
     
     return (
         <div className='container'>
-            <div className='card'>
-                <div className='card-content'>
-                    <p className='title is-2'>{singleProductState.name}</p>
-                    <p className='subtitle is-2'>{singleProductState.barcode}</p>
-                    <p className='title is-3'>${singleProductState.price}</p>
-                    <p className='subtitle is-3'>Stock: {singleProductState.stock} units</p>
+            <div className='columns is-centered'>
+                <div className='column is-7'>
+
+                    <div className='card'>
+                        <div className='card-content'>
+                            <p className='title is-2'>Product name: {singleProductState.name}</p>
+                            <p className='subtitle is-2'>Barcode: {singleProductState.barcode}</p>
+                            <p className='title is-3'>Price: ${singleProductState.price}</p>
+                            <p className='subtitle is-3'>Stock: {singleProductState.stock} units</p>
+                        </div>
+                        <footer class="card-footer">
+                            <button  className="card-footer-item button is-link is-outlined"><Link to={'/products/update/'+id}>Edit</Link></button>
+                            <button onClick={deleteConfirm}  className="card-footer-item button is-danger is-outlined" >Delete</button>
+                        </footer>
+                    </div>
                 </div>
-                <footer class="card-footer">
-                    <button  className="card-footer-item button is-link is-outlined"><Link to={'/products/update/'+id}>Edit</Link></button>
-                    <button onClick={deleteConfirm}  className="card-footer-item button is-danger is-outlined" >Delete</button>
-                </footer>
             </div>
         </div>
     )
